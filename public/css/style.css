@@ -1,0 +1,202 @@
+*{
+    font-family: 'Raleway', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+/*     START MENU     */
+#MenuOuter{
+    background-color: rgba(255,255,255,0.7);
+    height: 50px;
+}
+
+#Menu {
+    width: 75%;
+    margin: auto;
+}
+
+nav#MenuRight {
+    height: 50px;
+    width:50%;
+    float: right;
+}
+
+nav#MenuRight ul li:first-of-type {
+    margin-right: 50px;
+}
+
+nav#MenuRight ul li {
+    float: right;
+    list-style: none;
+    margin: 13px 10px;
+}
+
+nav#MenuRight ul li a{
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+nav#MenuLeft {
+    height: 50px;
+    width:50%;
+    float: left;
+}
+
+nav#MenuLeft ul li {
+    float: left;
+    list-style: none;
+    margin: 13px 10px;
+    margin-left: 50px;
+}
+
+nav#MenuLeft ul li a{
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+nav#Clear{
+    clear: both;
+}
+
+/*     END MENU     */
+
+body{
+    background-color: #f7f7f7;
+}
+
+#Container{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* LOGIN */
+
+h1.Login {
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 137, 255, 0.91);
+    padding: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+form.Login {
+    margin-left: auto;
+    width: 750px;
+    margin-right: auto;
+    font-size: 30px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    height: 350px;
+    margin-top: 150px;
+    box-shadow: 0px 0px 15px #000;
+}
+
+.inner-form {
+    width: 505px;
+    margin-top: 50px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inner-form label {
+    float: left;
+    clear: left;
+    font-size: 30px;
+}
+
+.inner-form input {
+    float: right;
+    clear: right;
+    font-size: 30px;
+}
+
+input[type="submit"] {
+    padding: 7px 15px;
+    background-color: transparent;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* REGISTER */
+
+
+h1.Register{
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 137, 255, 0.91);
+    padding: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+form.Register {
+    margin-left: auto;
+    width: 750px;
+    margin-right: auto;
+    font-size: 30px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    min-height: 550px;
+    margin-top: 150px;
+    box-shadow: 0px 0px 15px #000;
+}
+
+.inner-form {
+    width: 505px;
+    margin-top: 50px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inner-form label {
+    float: left;
+    clear: left;
+    font-size: 30px;
+}
+
+.inner-form input {
+    float: right;
+    clear: right;
+    font-size: 30px;
+}
+
+input[type="submit"] {
+    padding: 7px 15px;
+    background-color: transparent;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.inner-form input[name="Firstname"]{
+    float: left;
+    clear: left;
+    width: 225px;
+}
+
+.inner-form input[name="Lastname"]{
+    float: right;
+    clear: right;
+    width: 225px;
+}
+
+
+.inner-form label[name="Firstname"]{
+    float: left;
+    clear: left;
+}
+
+.inner-form label[name="Lastname"]{
+    float: right;
+    clear: right;
+}
