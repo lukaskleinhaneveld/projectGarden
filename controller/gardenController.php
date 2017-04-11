@@ -27,6 +27,7 @@ function register(){
 }
 
 function registerProcess(){
+    $message = '';
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
         $Firstname = $_POST['Firstname'];
         $Lastname = $_POST['Lastname'];
@@ -35,11 +36,12 @@ function registerProcess(){
 
 		registerUser($Firstname, $Password, $Email, $Password);
 	}else{
-        echo "The form method has been set incorrectly!";
+        $message = "The form method has been set incorrectly!";
+        return $message;
     }
 
-    render("garden/index", array(
-        'message' => "You have successfully been registered!"
+    render("garden/register", array(
+        'message' => $message
     ));
 }
 

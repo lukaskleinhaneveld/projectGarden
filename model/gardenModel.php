@@ -46,19 +46,34 @@ function registerUser($Firstname, $Password, $Email, $Password){
 		return "Niet alle velden zijn correct ingevuld";
 	}
 
-
-    $sql = "INSERT INTO users (Firstname, Lastname, Password, Email, Active) VALUES (:Firstname, :Lastname, :Password, :Email, :Active)";
+    $sql = "SELECT * FROM users WHERE Email=:Email";
     $query = $db->prepare($sql);
-
-    $Password = password_hash($Password, PASSWORD_BCRYPT);
-
     $query->execute(array(
-        ':Firstname' => $Firstname,
-        ':Lastname' => $Lastname,
-        ':Email' => $Email,
-        ':Password' => $Password,
-        ':Active' => $Active
+        ':Email' => $Email
     ));
+    $count = $query->rowCount();
+
+    if($count == 0){
+
+        $sql = "INSERT INTO users (Firstname, Lastname, Password, Email, Active) VALUES (:Firstname, :Lastname, :Password, :Email, :Active)";
+        $query = $db->prepare($sql);
+
+        $Password = password_hash($Password, PASSWORD_BCRYPT);
+
+        $query->execute(array(
+            ':Firstname' => $Firstname,
+            ':Lastname' => $Lastname,
+            ':Email' => $Email,
+            ':Password' => $Password,
+            ':Active' => $Active
+        ));
+
+        $message = "You have successfully been registered!";
+        return $message;
+    }else{
+        $message = "This email already exist. Please enter a different email adress.";
+        return $message;
+    }
 
     $db = null;
 }
