@@ -1,13 +1,16 @@
 <div id="Container">
-    <form class="Register">
+    <form class="Register" method="post" action="<?= URL.'/garden/registerProcess' ?>">
+
+        <?php if(!empty($message)){ ?>
+        <h2><?= $message ?></h2>
+        <?php } ?>
+
         <h1 class="Register">Register:</h1>
         <div class="inner-form">
             <input type="hidden" name="Active" value="0">
             <label for="Firstname" name="Firstname">Firstname:</label><label for="Lastname" name="Lastname">Lastname:</label>
             <br/>
-            <br/>
             <input type="text" name="Firstname" placeholder="Firstname"><input type="text" name="Lastname" placeholder="Lastname">
-            <br/>
             <br/>
             <br/>
             <label for="Email">Email:</label>

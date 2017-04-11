@@ -1,6 +1,8 @@
 <?php
 
-function index($message = ''){
+require(ROOT."model/gardenModel.php");
+
+function index($message = 'default message'){
 
 	render("garden/index", array(
 		'message' => $message
@@ -9,24 +11,37 @@ function index($message = ''){
 
 function login(){
 
+    //loginUser($Email, $Password);
 
     render("garden/login");
 }
 
 function logout(){
-	
+
 }
 
 function register(){
-	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		Register($Firstname, $Lastname, $Email, $Password);
-	}
 
     render("garden/register");
-	header("Location:" . URL . "garden/index");
+
 }
 
-function forgotten(){
+function registerProcess(){
+	if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $Firstname = $_POST['Firstname'];
+        $Lastname = $_POST['Lastname'];
+        $Email = $_POST['Email'];
+        $Password = $_POST['Password'];
+
+		registerUser($Firstname, $Password, $Email, $Password);
+	}else{
+        echo "The form method has been set incorrectly!";
+    }
+
+    //header('Location: '.URL.'/garden/index');
+}
+
+function forgottenModdel(){
 
 
     render("garden/forgotten");
