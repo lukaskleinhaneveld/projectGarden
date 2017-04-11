@@ -1,5 +1,5 @@
 <div id="Container">
-    <form class="Register" method="post" action="<?= URL.'/garden/registerProcess' ?>">
+    <form class="Register" method="post" action="<?= URL.'garden/registerProcess' ?>">
 
         <?php if(!empty($message)){ ?>
         <h2><?= $message ?></h2>

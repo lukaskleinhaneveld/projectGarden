@@ -60,8 +60,6 @@ function registerUser($Firstname, $Password, $Email, $Password){
         ':Active' => $Active
     ));
 
-    return $query->fetchAll();
-
     $db = null;
 }
 

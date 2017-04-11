@@ -2,7 +2,7 @@
 
 require(ROOT."model/gardenModel.php");
 
-function index($message = 'default message'){
+function index($message = ''){
 
 	render("garden/index", array(
 		'message' => $message
@@ -38,7 +38,9 @@ function registerProcess(){
         echo "The form method has been set incorrectly!";
     }
 
-    //header('Location: '.URL.'/garden/index');
+    render("garden/index", array(
+        'message' => "You have successfully been registered!"
+    ));
 }
 
 function forgottenModdel(){
