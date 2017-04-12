@@ -17,10 +17,18 @@
 			</nav>
 			<nav id="MenuRight">
 		        <ul>
-		            <li><a href="<?= URL ?>garden/register">Register</a></li>
+					<?php if($_SESSION['LoggedIn'] == 1){ ?>
+						<li><a href="<?= URL ?>garden/logout">Logout</a></li>
+					<?php }else{ ?>
+						<li><a href="<?= URL ?>garden/register">Register</a></li>
+					<?php } ?>
 		            <li><a href="<?= URL ?>garden/login">Login</a></li>
 		        </ul>
 			</nav>
 			<nav id="Clear"></nav>
 		</div>
 	</div>
+
+	<?php if(!empty($_SESSION['message'])){ ?>
+		<h2><?= $_SESSION['message']; ?></h2>
+	<?php } ?>

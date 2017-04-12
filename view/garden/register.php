@@ -1,10 +1,5 @@
 <div id="Container">
     <form class="Register" method="post" action="<?= URL.'garden/registerProcess' ?>">
-
-        <?php if(!empty($message)){ ?>
-        <h2><?= $message ?></h2>
-        <?php } ?>
-
         <h1 class="Register">Register:</h1>
         <div class="inner-form">
             <input type="hidden" name="Active" value="0">

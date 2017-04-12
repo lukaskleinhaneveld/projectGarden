@@ -1,9 +1,5 @@
 <div id="Container">
-    <h1>Welcome to the homepage</h1>
+    <?= var_dump($_SESSION); ?>
+    <h1>Welcome to the homepage, <?= $_SESSION['Firstname'].' '.$_SESSION['Lastname'] ?></h1>
     <br/>
-    
-    <?php if(!empty($message)){ ?>
-    <h2><?= $message ?></h2>
-    <?php } ?>
-
 </div>
