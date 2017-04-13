@@ -13,22 +13,26 @@
 			<nav id="MenuLeft">
 		        <ul>
 		            <li><a href="<?= URL ?>garden/index">Home</a></li>
+					<?php if(!empty($_SESSION['LoggedIn'])){ ?>
+						<li><a href="<?= URL ?>garden/account">Account</a></li>
+					<?php } ?>
 		        </ul>
 			</nav>
 			<nav id="MenuRight">
 		        <ul>
-					<?php if($_SESSION['LoggedIn'] == 1){ ?>
+					<?php if(!empty($_SESSION['LoggedIn'])){ ?>
 						<li><a href="<?= URL ?>garden/logout">Logout</a></li>
 					<?php }else{ ?>
 						<li><a href="<?= URL ?>garden/register">Register</a></li>
+			            <li><a href="<?= URL ?>garden/login">Login</a></li>
 					<?php } ?>
-		            <li><a href="<?= URL ?>garden/login">Login</a></li>
 		        </ul>
 			</nav>
 			<nav id="Clear"></nav>
 		</div>
 	</div>
-
-	<?php if(!empty($_SESSION['message'])){ ?>
-		<h2><?= $_SESSION['message']; ?></h2>
-	<?php }?>
+	<div id="MessageBox">
+		<?php if(!empty($_SESSION['message'])){ ?>
+			<h2 class="Message"><?= $_SESSION['message']; ?></h2>
+		<?php }?>
+	</div>

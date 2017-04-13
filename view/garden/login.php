@@ -1,5 +1,5 @@
 <div id="Container">
-    <form action="<?= URL.'garden/loginUser' ?>" class="Login" method="post">
+    <form action="<?= URL.'garden/loginProcess' ?>" class="Login" method="post">
         <h1 class="Login">Login:</h1>
         <div class="inner-form">
             <label for="Email">Email:</label>
@@ -10,7 +10,7 @@
             <input type="password" name="Password" placeholder="Your password">
             <br/>
             <br/>
-            <input type="submit" value="Login">
+            <input type="submit" name="submit" value="Login">
         </div>
     </form>
 </div>

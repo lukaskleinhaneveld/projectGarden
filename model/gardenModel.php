@@ -1,6 +1,6 @@
 <?php
 
-function loginUser(){
+function loginUser($Email, $Password){
     $db = openDatabaseConnection();
 
     $Password = md5(sha1($_POST['Password']));
@@ -15,8 +15,6 @@ function loginUser(){
 
     if($users != null){
         if($Password == $users['Password'] && $Email == $users['Email']){
-            $message = "Success!";
-            $_SESSION['LoggedIn'] = 1;
 
             $sql = "SELECT Firstname, Lastname FROM users WHERE Email=:Email";
             $query = $db->prepare($sql);
@@ -28,18 +26,19 @@ function loginUser(){
             $Firstname = $users['Firstname'];
             $Lastname = $users['Lastname'];
 
+            $message = "Logged in!";
+
             $_SESSION['Firstname'] = $Firstname;
             $_SESSION['Lastname'] = $Lastname;
-
-            header('Location :' .URL. 'garden/index');
-                $_SESSION['message'] = $message;
+            $_SESSION['LoggedIn'] = 1;
+            $_SESSION['message'] = $message;
         }else{
             $message = "This password does not exist. Please try again.";
-                $_SESSION['message'] = $message;
+            $_SESSION['message'] = $message;
         }
     }else{
         $message = "This email does not exist. Please try again or register.";
-            $_SESSION['message'] = $message;
+        $_SESSION['message'] = $message;
     }
 
     $db = null;

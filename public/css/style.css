@@ -64,6 +64,25 @@ nav#Clear{
 
 /*     END MENU     */
 
+h2.Message{
+    margin-left: 190px;
+}
+
+#MessageBox {
+    width: 750px;
+    height: 75px;
+    margin-top: 20px;
+    float: right;
+    clear: right;
+}
+
+.Welcome{
+    margin-top: 20px;
+    width: 750px;
+    float: left;
+    clear: left;
+}
+
 body{
     background-color: #f7f7f7;
 }
