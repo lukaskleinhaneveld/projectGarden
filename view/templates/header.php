@@ -31,4 +31,4 @@
 
 	<?php if(!empty($_SESSION['message'])){ ?>
 		<h2><?= $_SESSION['message']; ?></h2>
-	<?php } ?>
+	<?php }?>

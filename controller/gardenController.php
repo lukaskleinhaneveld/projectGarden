@@ -1,7 +1,6 @@
 <?php
 
 require(ROOT."model/gardenModel.php");
-$_SESSION['LoggedIn'] = 0;
 
 function index(){
 	if($_SESSION['LoggedIn'] == 1){
@@ -20,8 +19,9 @@ function logout(){
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['Yes'])) {
-		$_SESSION['LoggedIn'] == 0;
+		session_unset($_SESSION['LoggedIn']);
 		$message = "Logged out";
+		header('Location: '.URL.'garden/index');
 		$_SESSION['message'] = $message;
     } else {
 		header('Location: '.URL.'garden/index');

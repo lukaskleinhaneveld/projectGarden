@@ -1,9 +1,9 @@
 <?php
 
-function loginUser($Email, $Password){
+function loginUser(){
     $db = openDatabaseConnection();
 
-    $Password = $_POST['Password'];
+    $Password = md5(sha1($_POST['Password']));
     $Email = $_POST['Email'];
 
     $sql = "SELECT * FROM users WHERE Email=:Email";
@@ -16,7 +16,7 @@ function loginUser($Email, $Password){
     if($users != null){
         if($Password == $users['Password'] && $Email == $users['Email']){
             $message = "Success!";
-            $_SESSION['LoggedIn'] == 1;
+            $_SESSION['LoggedIn'] = 1;
 
             $sql = "SELECT Firstname, Lastname FROM users WHERE Email=:Email";
             $query = $db->prepare($sql);
@@ -74,7 +74,7 @@ function registerUser($Firstname, $Password, $Email, $Password){
     if($count == 0){
         $sql = "INSERT INTO users (Firstname, Lastname, Password, Email, Active) VALUES (:Firstname, :Lastname, :Password, :Email, :Active)";
         $query = $db->prepare($sql);
-        $Password = password_hash($Password, PASSWORD_BCRYPT);
+        $Password = md5(sha1($Password));
         $query->execute(array(
             ':Firstname' => $Firstname,
             ':Lastname' => $Lastname,
