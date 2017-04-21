@@ -30,7 +30,7 @@
 			<nav id="MenuRight">
 		        <ul>
 					<?php if(!empty($_SESSION['LoggedIn'])){ ?>
-						<li><a href="<?= URL ?>login/logout">Logout</a></li>
+						<li></li>
 					<?php }else{ ?>
 						<li><a href="<?= URL ?>register">Register</a></li>
 			            <li><a href="<?= URL ?>login">Login</a></li>
