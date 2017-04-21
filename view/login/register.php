@@ -1,5 +1,5 @@
 <div id="Container">
-    <form class="Register" method="post" action="<?= URL.'garden/registerProcess' ?>">
+    <form class="Register" method="post" action="<?= URL.'login/registerProcess' ?>">
         <h1 class="Register">Register:</h1>
         <div class="inner-form">
             <input type="hidden" name="Active" value="0">
@@ -14,6 +14,10 @@
             <br/>
             <label for="Password">Password:</label>
             <input type="password" name="Password" placeholder="Your password">
+            <br/>
+            <br/>
+            <label for="Password">Confirm password:</label>
+            <input type="password" name="ConfirmPassword" placeholder="Confirm your password">
             <br/>
             <br/>
             <input type="submit" value="Register">

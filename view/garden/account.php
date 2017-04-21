@@ -1,3 +1,6 @@
+<div class="Page">
+    <h1>Account</h1>
+</div>
 <div id="Container">
-    <h1>Account page!</h1>
+
 </div>

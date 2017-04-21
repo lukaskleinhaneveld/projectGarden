@@ -1,5 +1,5 @@
 <div id="Container">
-    <form action="<?= URL.'garden/loginProcess' ?>" class="Login" method="post">
+    <form action="<?= URL.'login/loginProcess' ?>" class="Login" method="post">
         <h1 class="Login">Login:</h1>
         <div class="inner-form">
             <label for="Email">Email:</label>

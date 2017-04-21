@@ -17,8 +17,9 @@
 
 nav#MenuRight {
     height: 50px;
-    width:50%;
+    width: 30%;
     float: right;
+    margin-right: 20%;
 }
 
 nav#MenuRight ul li:first-of-type {
@@ -40,7 +41,7 @@ nav#MenuRight ul li a{
 
 nav#MenuLeft {
     height: 50px;
-    width:50%;
+    width: 30%;
     float: left;
 }
 
@@ -62,35 +63,55 @@ nav#Clear{
     clear: both;
 }
 
-/*     END MENU     */
+.User {
+    height: 50px;
+    float: right;
+    clear: right;
+    width: 20%;
+    margin-top: -35px;
+}
 
-h2.Message{
-    margin-left: 190px;
+.User li{
+    list-style: none;
 }
 
 #MessageBox {
-    width: 750px;
-    height: 75px;
-    margin-top: 20px;
-    float: right;
-    clear: right;
+    width: 40%;
+    height: 50px;
+    float: left;
+    margin-left: -20%;
 }
 
+p.Message {
+    margin-top: 14px;
+    margin-left: 60px;
+}
+
+.Settings {
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+}
+
+/*     END MENU     */
+
+
+
 .Welcome{
-    margin-top: 20px;
     width: 750px;
     float: left;
-    clear: left;
 }
 
 body{
     background-color: #f7f7f7;
 }
 
-#Container{
-    width: 80%;
+#Container {
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 25px;
+    min-height: 100%;
 }
 
 /* LOGIN */
@@ -114,34 +135,6 @@ form.Login {
     height: 350px;
     margin-top: 150px;
     box-shadow: 0px 0px 15px #000;
-}
-
-.inner-form {
-    width: 505px;
-    margin-top: 50px;
-    height: 250px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.inner-form label {
-    float: left;
-    clear: left;
-    font-size: 30px;
-}
-
-.inner-form input {
-    float: right;
-    clear: right;
-    font-size: 30px;
-}
-
-input[type="submit"] {
-    padding: 7px 15px;
-    background-color: transparent;
-    border: none;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 /* REGISTER */
@@ -169,7 +162,7 @@ form.Register {
 }
 
 .inner-form {
-    width: 505px;
+    width: 605px;
     margin-top: 50px;
     height: 250px;
     margin-left: auto;
@@ -192,8 +185,10 @@ input[type="submit"] {
     padding: 7px 15px;
     background-color: transparent;
     border: none;
+    font-size: 16px;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
 }
 
 
@@ -218,4 +213,71 @@ input[type="submit"] {
 .inner-form label[name="Lastname"]{
     float: right;
     clear: right;
+}
+
+/*ACCOUNT */
+.Page {
+    width: auto;
+    float: left;
+    padding: 5px 35px 15px 20px;
+    height: 2em;
+    background-color: rgba(160, 213, 222, 1);
+    border-bottom-right-radius: 30px;
+    box-shadow: 3px 4px 6px #adadad;
+}
+
+
+
+
+
+
+
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: transparent;
+    color: black;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    color: red;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown-outer {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display:block;
 }
