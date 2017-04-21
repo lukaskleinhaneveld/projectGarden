@@ -1,9 +1,12 @@
 <?php
-
 require(ROOT."model/loginModel.php");
 
-function login(){
-    render("login/login");
+function index(){
+	if(!empty($_SESSION['LoggedIn'])){
+		header('location: ' . URL . 'home/index');
+	}else{
+		render("login/index");
+	}
 }
 
 function loginProcess(){
@@ -13,13 +16,12 @@ function loginProcess(){
 	loginUser($Email, $Password);
 
 	if(!empty($_SESSION['Firstname']) && !empty($_SESSION['Lastname'])){
-		header('Location: '.URL.'garden/account');
-	}else{
-		header('Location: '.URL.'login/login');
-        $message = "The information you have filled in is not correct. Please try again.";
-    }
-
+		header('Location: '.URL.'home/account');}
+		else{
+		header('Location: '.URL.'login/index');
+	}
     $_SESSION['message'] = $message;
+
 
 }
 
@@ -28,48 +30,17 @@ function logout(){
 
 	    if (isset($_POST['Yes'])) {
 			session_unset($_SESSION['LoggedIn']);
-			header('Location: '.URL.'garden/index');
 			$message = "Logged out";
+			header('Location: '.URL.'home/index');
 			$_SESSION['message'] = $message;
 	    } else {
-			header('Location: '.URL.'garden/index');
+			header('Location: '.URL.'home/index');
 	    }
-
 	}
 
 	render("login/logout");
 }
 
-function register(){
-
-    render("login/register");
-
-}
-
-function registerProcess(){
-	if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $Firstname = $_POST['Firstname'];
-        $Lastname = $_POST['Lastname'];
-        $Email = $_POST['Email'];
-        $Password = $_POST['Password'];
-        $ConfirmPass = $_POST['ConfirmPassword'];
-
-		if($Password == $ConfirmPass){
-			registerUser($Firstname, $Password, $Email, $Password);
-		}else{
-			$message = "The passwords you have entered do not match. Please try again.";
-			$_SESSION['message'] = $message;
-		}
-	}else{
-        $message = "The form method has been set incorrectly!";
-		$_SESSION['message'] = $message;
-    }
-
-    render("login/register");
-}
-
-function forgottenModdel(){
-
-
-    render("login/forgotten");
+function account(){
+	render("home/account");
 }

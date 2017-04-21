@@ -18,16 +18,22 @@
 			</div>
 			<nav id="MenuLeft">
 		        <ul>
-		            <li><a href="<?= URL ?>garden/index">Home</a></li>
+		            <li><a href="<?= URL ?>home/index">Home</a></li>
+					<?php if(!empty($_SESSION['LoggedIn'])){ ?>
+						<li><a href="<?= URL ?>home/account">Account</a></li>
+					<?php } ?>
+					<?php if(!empty($_SESSION['isAdmin'])){ ?>
+						<li><a href="<?= URL ?>admin/index">Admin</a></li>
+					<?php } ?>
 		        </ul>
 			</nav>
 			<nav id="MenuRight">
 		        <ul>
 					<?php if(!empty($_SESSION['LoggedIn'])){ ?>
-						
+						<li><a href="<?= URL ?>login/logout">Logout</a></li>
 					<?php }else{ ?>
-						<li><a href="<?= URL ?>login/register">Register</a></li>
-			            <li><a href="<?= URL ?>login/login">Login</a></li>
+						<li><a href="<?= URL ?>register">Register</a></li>
+			            <li><a href="<?= URL ?>login">Login</a></li>
 					<?php } ?>
 		        </ul>
 			</nav>
@@ -49,3 +55,6 @@
 			<nav id="Clear"></nav>
 		</div>
 	</div>
+
+
+<?php var_dump($_SESSION); ?>

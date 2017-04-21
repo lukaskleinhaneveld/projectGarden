@@ -6,39 +6,42 @@ function loginUser($Email, $Password){
     $Password = md5(sha1($_POST['Password']));
     $Email = $_POST['Email'];
 
-    $sql = "SELECT * FROM users WHERE Email=:Email";
+    $sql = "SELECT * FROM users WHERE Email=:Email AND Active = 1";
     $query = $db->prepare($sql);
     $query->execute(array(
         ':Email' => $Email
     ));
     $users = $query->fetch();
 
+    $Active = $users['Active'];
+
     if($users != null){
-        if($Password == $users['Password'] && $Email == $users['Email']){
+        if ($Active = 1) {
+            if($Password == $users['Password'] && $Email == $users['Email']){
 
-            $sql = "SELECT Firstname, Lastname FROM users WHERE Email=:Email";
-            $query = $db->prepare($sql);
-            $query->execute(array(
-                ':Email' => $Email
-            ));
-            $users = $query->fetch();
+                $sql = "SELECT Firstname, Lastname FROM users WHERE Email=:Email";
+                $query = $db->prepare($sql);
+                $query->execute(array(
+                    ':Email' => $Email
+                ));
+                $users = $query->fetch();
 
-            $Firstname = $users['Firstname'];
-            $Lastname = $users['Lastname'];
+                $Firstname = $users['Firstname'];
+                $Lastname = $users['Lastname'];
 
-            $message = "Logged in!";
+                $message = "Logged in!";
 
-            $_SESSION['Firstname'] = $Firstname;
-            $_SESSION['Lastname'] = $Lastname;
-            $_SESSION['LoggedIn'] = 1;
-            $_SESSION['message'] = $message;
+                $_SESSION['Firstname'] = $Firstname;
+                $_SESSION['Lastname'] = $Lastname;
+                $_SESSION['LoggedIn'] = 1;
+            }else{
+                $message = "This password does not exist. Please try again.";
+            }
         }else{
-            $message = "This password does not exist. Please try again.";
-            $_SESSION['message'] = $message;
+            $message = "This account has not been registered yet. Please try again later.";
         }
     }else{
         $message = "This email does not exist. Please try again or register.";
-        $_SESSION['message'] = $message;
     }
 
     $db = null;
@@ -50,7 +53,7 @@ function logoutUser(){
 
 }
 
-function registerUser($Firstname, $Password, $Email, $Password){
+function registerUser($Firstname, $Lastname, $Password, $ConfirmPass, $Email){
     $db = openDatabaseConnection();
 
     $Firstname = isset($_POST['Firstname']) ? $_POST['Firstname'] : '';
@@ -61,7 +64,7 @@ function registerUser($Firstname, $Password, $Email, $Password){
     $Active = 0;
 
     if (strlen($Firstname) == 0 || strlen($Lastname) == 0 || strlen($Password) == 0 || strlen($ConfirmPass) == 0 || strlen($Email) == 0) {
-		return "Niet alle velden zijn correct ingevuld";
+		$message = "Niet alle velden zijn correct ingevuld";
 	}
 
     $sql = "SELECT * FROM users WHERE Email=:Email";
@@ -91,6 +94,7 @@ function registerUser($Firstname, $Password, $Email, $Password){
     $db = null;
 
     $_SESSION['message'] = $message;
+
 }
 
 function forgotPassword(){
