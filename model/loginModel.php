@@ -62,6 +62,7 @@ function registerUser($Firstname, $Lastname, $Password, $ConfirmPass, $Email){
 	$Password = isset($_POST['Password']) ? $_POST['Password'] : '';
 	$ConfirmPass = isset($_POST['ConfirmPassword']) ? $_POST['ConfirmPassword'] : '';
     $Active = 0;
+    $isAdmin = 0;
 
     if (strlen($Firstname) == 0 || strlen($Lastname) == 0 || strlen($Password) == 0 || strlen($ConfirmPass) == 0 || strlen($Email) == 0) {
 		$message = "Niet alle velden zijn correct ingevuld";
@@ -75,7 +76,7 @@ function registerUser($Firstname, $Lastname, $Password, $ConfirmPass, $Email){
     $count = $query->rowCount();
 
     if($count == 0){
-        $sql = "INSERT INTO users (Firstname, Lastname, Password, Email, Active) VALUES (:Firstname, :Lastname, :Password, :Email, :Active)";
+        $sql = "INSERT INTO users (Firstname, Lastname, Password, Email, Active, isAdmin) VALUES (:Firstname, :Lastname, :Password, :Email, :Active, :isAdmin)";
         $query = $db->prepare($sql);
         $Password = md5(sha1($Password));
         $query->execute(array(
@@ -83,7 +84,8 @@ function registerUser($Firstname, $Lastname, $Password, $ConfirmPass, $Email){
             ':Lastname' => $Lastname,
             ':Email' => $Email,
             ':Password' => $Password,
-            ':Active' => $Active
+            ':Active' => $Active,
+            ':isAdmin' => $isAdmin
         ));
 
         $message = "You have successfully been registered!";

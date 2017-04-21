@@ -55,6 +55,3 @@
 			<nav id="Clear"></nav>
 		</div>
 	</div>
-
-
-<?php var_dump($_SESSION); ?>

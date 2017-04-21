@@ -12,5 +12,9 @@ function index(){
 
 
 function account(){
-	render("home/account");
+    if(!empty($_SESSION['LoggedIn'])){
+        render("home/account");
+	}else{
+		header('location: ' . URL . 'login/index');
+    }
 }
