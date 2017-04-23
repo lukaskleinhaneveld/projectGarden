@@ -16,8 +16,9 @@ function loginProcess(){
 	loginUser($Email, $Password);
 
 	if(!empty($_SESSION['Firstname']) && !empty($_SESSION['Lastname'])){
-		header('Location: '.URL.'home/account');}
-		else{
+		header('Location: '.URL.'home/account');
+		$message = "Logged in!";
+	}else{
 		header('Location: '.URL.'login/index');
 	}
     $_SESSION['message'] = $message;
@@ -39,8 +40,4 @@ function logout(){
 	}
 
 	render("login/logout");
-}
-
-function account(){
-	render("home/account");
 }

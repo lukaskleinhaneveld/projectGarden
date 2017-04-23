@@ -1,12 +1,24 @@
-<div class="container">
-<hr class="featurette-divider">
-    <div align= "center" class="geluidjes">
-        <h3>Edit a user</h3>
-        <form action="<?php echo URL; ?>admin/updateuser" method="POST">
-            <input type="text" name="email" value="<?php echo htmlspecialchars($user->Email, ENT_QUOTES, 'UTF-8'); ?>" required />
-            <br>
-            <input type="text" name="active" value="<?php echo htmlspecialchars($user->Active, ENT_QUOTES, 'UTF-8'); ?>" required /><br>
-            <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user->Id, ENT_QUOTES, 'UTF-8'); ?>" />
-            <input type="submit" name="submit_update_user" value="Update" />
-        </form>
-    </div>
+<div class="Page">
+    <h1>Edit user</h1>
+</div>
+<div id="Container">
+    <form class="adminAdminEditUserForm" method="post" action="<?= URL ?>admin/updateUser">
+        <input type="hidden" name="Id" value="<?= $user['Id'] ?>">
+        <label for="email">User email:</label>
+        <input type="text" name="email" value="<?= $user['Email']; ?>" required />
+        <br>
+        <label for="active">User active state:</label>
+            <select name="active">
+                <option value="" disabled selected>Selcect a value</option>
+                <option value="1">Active</option>
+                <option value="0">Inactive</option>
+            </select>
+        <br>
+        <label for="active">User is admin:</label>
+            <select name="isAdmin">
+                <option value="" disabled selected>Selcect a value</option>
+                <option value="1">Admin</option>
+                <option value="0">No Admin</option>
+            </select>
+        <input type="submit" name="submit_update_user" value="Update" />
+    </form>

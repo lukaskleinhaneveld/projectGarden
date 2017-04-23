@@ -19,21 +19,23 @@ function loginUser($Email, $Password){
         if ($Active = 1) {
             if($Password == $users['Password'] && $Email == $users['Email']){
 
-                $sql = "SELECT Firstname, Lastname FROM users WHERE Email=:Email";
+                $sql = "SELECT * FROM users WHERE Email=:Email";
                 $query = $db->prepare($sql);
                 $query->execute(array(
                     ':Email' => $Email
                 ));
-                $users = $query->fetch();
+                $user = $query->fetch();
 
-                $Firstname = $users['Firstname'];
-                $Lastname = $users['Lastname'];
+                $Id = $user['Id'];
+                $Firstname = $user['Firstname'];
+                $Lastname = $user['Lastname'];
 
-                $message = "Logged in!";
-
+                $_SESSION['Id'] = $Id;
                 $_SESSION['Firstname'] = $Firstname;
                 $_SESSION['Lastname'] = $Lastname;
                 $_SESSION['LoggedIn'] = 1;
+                $_SESSION['Active'] = $users['Active'];
+                $_SESSION['isAdmin'] = $users['isAdmin'];
             }else{
                 $message = "This password does not exist. Please try again.";
             }

@@ -1,6 +1,6 @@
 <div class="Page">
-    <h1>Account</h1>
+    <h1>Search results</h1>
 </div>
 <div id="Container">
-    
+
 </div>
