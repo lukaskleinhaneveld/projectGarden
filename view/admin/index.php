@@ -9,5 +9,5 @@
     </ul>
 </div>
 <div id="Container">
-    <?php var_dump($_SESSION) ?>
+
 </div>

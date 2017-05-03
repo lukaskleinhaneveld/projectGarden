@@ -25,6 +25,7 @@ function editUser($Id){
         if (isset($Id)) {
             $user = loadUser($Id);
             render("admin/edit", array(
+                'Id' => $user['Id'],
                 'user' => loadUser($Id)
             ));
         }else{
@@ -36,45 +37,45 @@ function editUser($Id){
 // This function updates the user information
 function updateUser($Id){
     $user = loadUser($Id);
-
     loadUser($Id);
-
+    // Check if the user has changed their info, else: use the know information
     if(isset($_POST['submit_update_user'])){
         if(isset($_POST['Firstname'])){
             $Firstname = $_POST['Firstname'];
         }else{
             $Firstname = $user['Firstname'];
-        }
+        };
         if(isset($_POST['Lastname'])){
             $Lastname = $_POST['Lastname'];
         }else{
             $Lastname = $user['Lastname'];
-        }
+        };
         if(isset($_POST['Password'])){
             $Password = $_POST['Password'];
         }else{
             $Password = $user['Password'];
-        }
+        };
         if(isset($_POST['Email'])){
             $Email = $_POST['Email'];
         }else{
             $Email = $user['Email'];
-        }
+        };
         if(isset($_POST['Active'])){
             $Active = $_POST['Active'];
         }else{
             $Active = $user['Active'];
-        }
+        };
         if(isset($_POST['isAdmin'])){
             $isAdmin = $_POST['isAdmin'];
         }else{
             $isAdmin = $user['isAdmin'];
-        }
+        };
 
         updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin, $Id);
         render(array(
             'user' => loadUser($Id)
         ));
+
         var_dump($Firstname);
         var_dump($Lastname);
         var_dump($Password);
@@ -82,6 +83,7 @@ function updateUser($Id){
         var_dump($Active);
         var_dump($isAdmin);
         var_dump($user);
+        var_dump($Id);
     }
     header('location: ' . URL . 'comments/admin');
 }

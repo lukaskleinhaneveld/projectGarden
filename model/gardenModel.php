@@ -44,12 +44,12 @@ function loadUser($Id){
 // This function does the database sided updating for the users
 function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin, $Id){
     $db = openDatabaseConnection();
-
+    
     $Password = md5(sha1($Password));
 
-    $sql = "UPDATE `users` SET `Firstname` = :Firstname,`Lastname` = :Lastname, `Password` = :Password, `Email` = :Email,`Active` = :Active,`isAdmin` = :isAdmin WHERE `Id` = :Id";
+    $sql = "UPDATE users SET Firstname = :Firstname, Lastname = :Lastname, Password = :Password, Email = :Email, Active = :Active, isAdmin = :isAdmin WHERE Id = :Id";
     $user = $db->prepare($sql);
-    $parameters = array(
+    $user->execute(array(
         ':Firstname' => $Firstname,
         ':Lastname' => $Lastname,
         ':Password' => $Password,
@@ -57,9 +57,9 @@ function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin
         ':Active' => $Active,
         ':isAdmin' => $isAdmin,
         ':Id' => $Id
-    );
-    $user->execute($parameters);
+    ));
     return $user->fetch();
+    var_dump($user);
 
     $db = null;
 
