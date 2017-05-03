@@ -32,8 +32,8 @@
 					<?php if(!empty($_SESSION['LoggedIn'])){ ?>
 						<li></li>
 					<?php }else{ ?>
-						<li><a href="<?= URL ?>login/register">Register</a></li>
-			            <li><a href="<?= URL ?>login/login">Login</a></li>
+						<li><a href="<?= URL ?>register/index">Register</a></li>
+			            <li><a href="<?= URL ?>login/index">Login</a></li>
 					<?php } ?>
 		        </ul>
 			</nav>
