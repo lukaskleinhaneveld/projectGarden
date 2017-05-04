@@ -15,12 +15,12 @@ function loginProcess(){
 
 	loginUser($Email, $Password);
 
-	if(!empty($_SESSION['Firstname']) && !empty($_SESSION['Lastname'])){
+	if(isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])){
 		header('Location: '.URL.'home/account');
 		$message = "Logged in!";
 	}else{
-		header('Location: '.URL.'login/index');
-		$message = "Login failed!";
+		//header('Location: '.URL.'login/index');
+		//$message = "Login failed!";
 	}
     $_SESSION['message'] = $message;
 

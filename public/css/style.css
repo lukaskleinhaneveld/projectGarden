@@ -76,15 +76,14 @@ nav#Clear{
 }
 
 #MessageBox {
-    width: 75%;
+    width: 15%;
     height: 50px;
-    float: left;
-    padding: 2em;
+    float: right;
+    margin-top: 50px;
 }
 
 .Message {
     margin-top: 14px;
-    margin-left: 60px;
 }
 
 .Settings {
@@ -221,7 +220,6 @@ input[type="submit"] {
 .Page {
     width: auto;
     float: left;
-    clear: both;
     padding: 5px 35px 15px 20px;
     height: 2em;
     background-color: rgba(160, 213, 222, 1);

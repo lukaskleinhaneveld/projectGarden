@@ -3,9 +3,6 @@
 function loginUser($Email, $Password){
     $db = openDatabaseConnection();
 
-    $Password = hash('sha256', $_POST['Password']);
-    $Email = $_POST['Email'];
-
     $sql = "SELECT * FROM users WHERE Email=:Email AND Active = 1";
     $query = $db->prepare($sql);
     $query->execute(array(
@@ -14,12 +11,13 @@ function loginUser($Email, $Password){
     $users = $query->fetch();
 
     $Active = $users['Active'];
+    $Password = hash('sha256', $Password);
 
     if($users != null){
 
         if ($Active = 1) {
-            echo $Password . "  " ;
-            echo $users['Password'];
+            echo "User inputted password: " .$Password . "  <br/><br/>" ;
+            echo "Password in database: " . $users['Password'];
             if($Password == $users['Password'] && $Email == $users['Email']){
 
                 $sql = "SELECT * FROM users WHERE Email=:Email";

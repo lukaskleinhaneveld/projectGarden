@@ -49,4 +49,8 @@
 			<?php } ?>
 			<nav id="Clear"></nav>
 		</div>
+		<div id="MessageBox">
+			<?php if(!empty($_SESSION['message'])){ ?>
+				<h3 class="Message"><?= $_SESSION['message']; } ?></h3>
+		</div>
 	</div>

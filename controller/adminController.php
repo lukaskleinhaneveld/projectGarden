@@ -81,7 +81,7 @@ function updateUser($Id){
 
 // Function to display the "admin/users" page
 function users(){
-    if(!empty($_SESSION['LoggedIn'])){
+    if(!empty($_SESSION['isAdmin'])){
         render("admin/users", array(
             'users' => loadUsers()
         ));
@@ -97,7 +97,7 @@ function findUser(){
 
         // Activates the searchThroughUsers function in the "gardenModel"
         loadUser($Id);
-        if(!empty($_SESSION['LoggedIn'])){
+        if(!empty($_SESSION['isAdmin'])){
             render("admin/searchResults", array(
 
             ));

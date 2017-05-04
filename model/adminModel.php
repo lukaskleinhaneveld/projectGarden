@@ -4,7 +4,7 @@
 function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin, $Id){
     $db = openDatabaseConnection();
 
-    $Password = hash('sha256', $Password);
+    //$Password = hash('sha256', $Password);
 
     $sql = "UPDATE users SET Firstname = :Firstname, Lastname = :Lastname, Password = :Password, Email = :Email, Active = :Active, isAdmin = :isAdmin WHERE Id = :Id";
     $query = $db->prepare($sql);
