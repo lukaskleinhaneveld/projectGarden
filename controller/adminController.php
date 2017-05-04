@@ -1,6 +1,7 @@
 <?php
 
 require(ROOT."model/gardenModel.php");
+require(ROOT."model/adminModel.php");
 require(ROOT."model/loginModel.php");
 
 
@@ -106,4 +107,8 @@ function findUser(){
     }else{
         users();
     }
+}
+
+function deleteUser($Id){
+    deleteUserFromDatabase($Id);
 }
