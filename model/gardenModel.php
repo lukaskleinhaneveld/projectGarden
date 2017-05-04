@@ -40,6 +40,7 @@ function loadUser($Id){
 
     $db = null;
 }
+<<<<<<< HEAD
 
 // This function does the database sided updating for the users
 function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin, $Id){
@@ -79,3 +80,5 @@ function searchThroughUsers(){
     
     $db = null;
 }
+=======
+>>>>>>> 9a7567c876ff2b70ffddc814c009e55e58b1174a

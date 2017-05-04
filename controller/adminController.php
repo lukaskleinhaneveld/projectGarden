@@ -1,6 +1,7 @@
 <?php
 
 require(ROOT."model/gardenModel.php");
+require(ROOT."model/adminModel.php");
 require(ROOT."model/loginModel.php");
 
 
@@ -145,8 +146,16 @@ function findUser(){
     }else{
         $message = "Please enter a valid search request";
     }
+<<<<<<< HEAD
         render("admin/searchResults", array(
             'results' => $results
         ));
     //$_SESSION['message'] = $message;
 }
+=======
+}
+
+function deleteUser($Id){
+    deleteUserFromDatabase($Id);
+}
+>>>>>>> 9a7567c876ff2b70ffddc814c009e55e58b1174a
