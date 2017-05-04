@@ -21,7 +21,7 @@ function index(){
 // This function displays the "admin/user" page
 function editUser($Id){
     if(empty($_SESSION['isAdmin'])){
-        header('location: ' . URL . 'admin/index');
+        header('location: ' . URL . 'admin/users');
     }else{
         if (isset($Id)) {
             $user = loadUser($Id);
@@ -30,58 +30,64 @@ function editUser($Id){
                 'user' => loadUser($Id)
             ));
         }else{
-            header('location: ' . URL . 'admin/index');
+            header('location: ' . URL . 'admin/users');
         }
     }
 }
 
 // This function updates the user information
 function updateUser($Id){
-    $user = loadUser($Id);
-    loadUser($Id);
-    // Check if the user has changed their info, else: use the know information
-    if(isset($_POST['submit_update_user'])){
-        if(isset($_POST['Firstname'])){
-            $Firstname = $_POST['Firstname'];
-        }else{
-            $Firstname = $user['Firstname'];
-        };
-        if(isset($_POST['Lastname'])){
-            $Lastname = $_POST['Lastname'];
-        }else{
-            $Lastname = $user['Lastname'];
-        };
-        if(isset($_POST['Password'])){
-            $Password = $_POST['Password'];
-        }else{
-            $Password = $user['Password'];
-        };
-        if(isset($_POST['Email'])){
-            $Email = $_POST['Email'];
-        }else{
-            $Email = $user['Email'];
-        };
-        if(isset($_POST['Active'])){
-            $Active = $_POST['Active'];
-        }else{
-            $Active = $user['Active'];
-        };
-        if(isset($_POST['isAdmin'])){
-            $isAdmin = $_POST['isAdmin'];
-        }else{
-            $isAdmin = $user['isAdmin'];
-        };
+    if(empty($_SESSION['isAdmin'])){
+        header('location: ' . URL . 'home/index');
+        $message = "You are not authorised to do that.";
+    }else{
+        $user = loadUser($Id);
+        loadUser($Id);
+        // Check if the user has changed their info, else: use the know information
+        if(isset($_POST['submit_update_user'])){
+            if(isset($_POST['Firstname'])){
+                $Firstname = $_POST['Firstname'];
+            }else{
+                $Firstname = $user['Firstname'];
+            };
+            if(isset($_POST['Lastname'])){
+                $Lastname = $_POST['Lastname'];
+            }else{
+                $Lastname = $user['Lastname'];
+            };
+            if(isset($_POST['Password'])){
+                $Password = $_POST['Password'];
+            }else{
+                $Password = $user['Password'];
+            };
+            if(isset($_POST['Email'])){
+                $Email = $_POST['Email'];
+            }else{
+                $Email = $user['Email'];
+            };
+            if(isset($_POST['Active'])){
+                $Active = $_POST['Active'];
+            }else{
+                $Active = $user['Active'];
+            };
+            if(isset($_POST['isAdmin'])){
+                $isAdmin = $_POST['isAdmin'];
+            }else{
+                $isAdmin = $user['isAdmin'];
+            };
 
-        updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin, $Id);
-        render("home/index", array(
-            'user' => loadUser($Id)
-        ));
+            updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin, $Id);
+            render("home/index", array(
+                'user' => loadUser($Id)
+            ));
+            header('Location: ' . URL . 'admin/users');
+        }
     }
 }
 
 // Function to display the "admin/users" page
 function users(){
-    if(!empty($_SESSION['isAdmin'])){
+    if(!empty($_SESSION['LoggedIn'])){
         render("admin/users", array(
             'users' => loadUsers()
         ));
@@ -93,20 +99,19 @@ function users(){
 
 // This function is activated by the search function in the search bar in "admin/users"
 function findUser(){
-    if (!empty($_POST['search'])) {
-
-        // Activates the searchThroughUsers function in the "gardenModel"
-        loadUser($Id);
-        if(!empty($_SESSION['isAdmin'])){
-            render("admin/searchResults", array(
-
-            ));
-    	}else{
-    		header('location: ' . URL . 'login/index');
-        }
+    if(!empty($_SESSION['isAdmin'])){
+     
+        if (isset($_GET['search'])) {
+                // Activates the searchThroughUsers function in the "gardenModel"
+                $results = searchThroughUsers();
+            } else{ header('location: ' . URL . 'login/index'); }
     }else{
-        users();
+        $message = "Please enter a valid search request";
     }
+        render("admin/searchResults", array(
+            'results' => $results
+        ));
+    //$_SESSION['message'] = $message;
 }
 
 function deleteUser($Id){

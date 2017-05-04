@@ -28,16 +28,14 @@ function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin
 function searchThroughUsers(){
     $db = openDatabaseConnection();
 
-    $Email = $_POST['search'];
+    $search = $_GET['search'];
 
-    $sql = "SELECT * FROM users WHERE Email = :Email";
+    $sql = "SELECT * FROM users WHERE Email LIKE '%".$search."%'";
     $results = $db->prepare($sql);
-    $parameters = array(
-        ':Email' => $Email
-    );
-    $results->execute($parameters);
+   
+    $results->execute();
 
-    return $resutls->fetch();
+    return $results->fetchAll();
 
     $db = null;
 }
