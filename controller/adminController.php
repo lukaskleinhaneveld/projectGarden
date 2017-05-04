@@ -36,45 +36,49 @@ function editUser($Id){
 
 // This function updates the user information
 function updateUser($Id){
-    $user = loadUser($Id);
-    loadUser($Id);
-    // Check if the user has changed their info, else: use the know information
-    if(isset($_POST['submit_update_user'])){
-        if(isset($_POST['Firstname'])){
-            $Firstname = $_POST['Firstname'];
-        }else{
-            $Firstname = $user['Firstname'];
-        };
-        if(isset($_POST['Lastname'])){
-            $Lastname = $_POST['Lastname'];
-        }else{
-            $Lastname = $user['Lastname'];
-        };
-        if(isset($_POST['Password'])){
-            $Password = $_POST['Password'];
-        }else{
-            $Password = $user['Password'];
-        };
-        if(isset($_POST['Email'])){
-            $Email = $_POST['Email'];
-        }else{
-            $Email = $user['Email'];
-        };
-        if(isset($_POST['Active'])){
-            $Active = $_POST['Active'];
-        }else{
-            $Active = $user['Active'];
-        };
-        if(isset($_POST['isAdmin'])){
-            $isAdmin = $_POST['isAdmin'];
-        }else{
-            $isAdmin = $user['isAdmin'];
-        };
+    if(empty($_SESSION['isAdmin'])){
+        header('location: ' . URL . 'admin/index');
+    }else{
+        $user = loadUser($Id);
+        loadUser($Id);
+        // Check if the user has changed their info, else: use the know information
+        if(isset($_POST['submit_update_user'])){
+            if(isset($_POST['Firstname'])){
+                $Firstname = $_POST['Firstname'];
+            }else{
+                $Firstname = $user['Firstname'];
+            };
+            if(isset($_POST['Lastname'])){
+                $Lastname = $_POST['Lastname'];
+            }else{
+                $Lastname = $user['Lastname'];
+            };
+            if(isset($_POST['Password'])){
+                $Password = $_POST['Password'];
+            }else{
+                $Password = $user['Password'];
+            };
+            if(isset($_POST['Email'])){
+                $Email = $_POST['Email'];
+            }else{
+                $Email = $user['Email'];
+            };
+            if(isset($_POST['Active'])){
+                $Active = $_POST['Active'];
+            }else{
+                $Active = $user['Active'];
+            };
+            if(isset($_POST['isAdmin'])){
+                $isAdmin = $_POST['isAdmin'];
+            }else{
+                $isAdmin = $user['isAdmin'];
+            };
 
-        updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin, $Id);
-        render("home/index", array(
-            'user' => loadUser($Id)
-        ));
+            updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin, $Id);
+            render("home/index", array(
+                'user' => loadUser($Id)
+            ));
+        }
     }
 }
 
@@ -91,19 +95,58 @@ function users(){
 }
 
 // This function is activated by the search function in the search bar in "admin/users"
+
+
+//if(!empty($_REQUEST['search'])){
+//
+//    $search = $_REQUEST['search'];
+//
+//    $sql = "SELECT * FROM schoenmerk WHERE schoenmerk LIKE '%".$search."%'"; 
+//    $r_query = mysqli_query($connection, $sql); 
+//
+//    while ($row = mysqli_fetch_array($r_query)){  
+//       $id = $row["id"];
+//	$schoenmerk = $row["schoenmerk"];
+//
+//	$tpl->newBlock( "schoenmerk");
+//    $tpl->assign( "id", $id );
+//	$tpl->assign( "schoenmerk", $schoenmerk );
+//        
+//           $getSize = "select * from sizes where schoenmerk_id =$id";
+//
+//    $size_result = mysqli_query($connection, $getSize);
+//    
+//    while ($row_size = mysqli_fetch_assoc ($size_result))
+//    {
+//        $id = $row_size["id"];
+//        $schoenmerk_id = $row_size["schoenmerk_id"];
+//        $size = $row_size["size"];
+//
+//        $tpl->newBlock( "size");
+//        $tpl->assign( "id", $id );
+//        $tpl->assign( "schoenmerk_id", $schoenmerk_id );
+//        $tpl->assign( "size", $size );
+//    }
+//    
+//    }
+//    
+//}else{
+//    echo "<h1>Please enter a valid search request</h1>";
+//}
+
+
 function findUser(){
-    if (!empty($_POST['search'])) {
-
-        // Activates the searchThroughUsers function in the "gardenModel"
-        loadUser($Id);
-        if(!empty($_SESSION['LoggedIn'])){
-            render("admin/searchResults", array(
-
-            ));
-    	}else{
-    		header('location: ' . URL . 'login/index');
-        }
+    if(!empty($_SESSION['isAdmin'])){
+     
+        if (isset($_GET['search'])) {
+                // Activates the searchThroughUsers function in the "gardenModel"
+                $results = searchThroughUsers();
+            } else{ header('location: ' . URL . 'login/index'); }
     }else{
-        users();
+        $message = "Please enter a valid search request";
     }
+        render("admin/searchResults", array(
+            'results' => $results
+        ));
+    //$_SESSION['message'] = $message;
 }
