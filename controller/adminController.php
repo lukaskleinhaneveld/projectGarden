@@ -21,7 +21,7 @@ function index(){
 // This function displays the "admin/user" page
 function editUser($Id){
     if(empty($_SESSION['isAdmin'])){
-        header('location: ' . URL . 'admin/index');
+        header('location: ' . URL . 'admin/users');
     }else{
         if (isset($Id)) {
             $user = loadUser($Id);
@@ -30,7 +30,7 @@ function editUser($Id){
                 'user' => loadUser($Id)
             ));
         }else{
-            header('location: ' . URL . 'admin/index');
+            header('location: ' . URL . 'admin/users');
         }
     }
 }
@@ -38,7 +38,8 @@ function editUser($Id){
 // This function updates the user information
 function updateUser($Id){
     if(empty($_SESSION['isAdmin'])){
-        header('location: ' . URL . 'admin/index');
+        header('location: ' . URL . 'home/index');
+        $message = "You are not authorised to do that.";
     }else{
         $user = loadUser($Id);
         loadUser($Id);
@@ -79,6 +80,7 @@ function updateUser($Id){
             render("home/index", array(
                 'user' => loadUser($Id)
             ));
+            header('Location: ' . URL . 'admin/users');
         }
     }
 }
@@ -96,46 +98,6 @@ function users(){
 }
 
 // This function is activated by the search function in the search bar in "admin/users"
-
-
-//if(!empty($_REQUEST['search'])){
-//
-//    $search = $_REQUEST['search'];
-//
-//    $sql = "SELECT * FROM schoenmerk WHERE schoenmerk LIKE '%".$search."%'"; 
-//    $r_query = mysqli_query($connection, $sql); 
-//
-//    while ($row = mysqli_fetch_array($r_query)){  
-//       $id = $row["id"];
-//	$schoenmerk = $row["schoenmerk"];
-//
-//	$tpl->newBlock( "schoenmerk");
-//    $tpl->assign( "id", $id );
-//	$tpl->assign( "schoenmerk", $schoenmerk );
-//        
-//           $getSize = "select * from sizes where schoenmerk_id =$id";
-//
-//    $size_result = mysqli_query($connection, $getSize);
-//    
-//    while ($row_size = mysqli_fetch_assoc ($size_result))
-//    {
-//        $id = $row_size["id"];
-//        $schoenmerk_id = $row_size["schoenmerk_id"];
-//        $size = $row_size["size"];
-//
-//        $tpl->newBlock( "size");
-//        $tpl->assign( "id", $id );
-//        $tpl->assign( "schoenmerk_id", $schoenmerk_id );
-//        $tpl->assign( "size", $size );
-//    }
-//    
-//    }
-//    
-//}else{
-//    echo "<h1>Please enter a valid search request</h1>";
-//}
-
-
 function findUser(){
     if(!empty($_SESSION['isAdmin'])){
      
@@ -146,16 +108,12 @@ function findUser(){
     }else{
         $message = "Please enter a valid search request";
     }
-<<<<<<< HEAD
         render("admin/searchResults", array(
             'results' => $results
         ));
     //$_SESSION['message'] = $message;
 }
-=======
-}
 
 function deleteUser($Id){
     deleteUserFromDatabase($Id);
 }
->>>>>>> 9a7567c876ff2b70ffddc814c009e55e58b1174a
