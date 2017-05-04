@@ -4,7 +4,7 @@
 <div id="Container">
     <h2>User info</h2>
     <div class="userListUsers">
-        <form class="" method="post" action="<?= URL ?>admin/updateUser">
+        <form class="" method="post" action="<?= URL ?>admin/updateUser/<?= $user['Id'] ?>">
             <input type="hidden" name="Id" value="<?= $user['Id'] ?>">
         <br/>
             <label>Firstname: </label>

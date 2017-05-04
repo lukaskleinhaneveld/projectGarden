@@ -2,13 +2,13 @@
     <h1>Edit user</h1>
 </div>
 <div id="Container">
-    <form class="adminAdminEditUserForm" method="POST" action="<?= URL ?>admin/updateUser">
+    <form class="adminAdminEditUserForm" method="POST" action="<?= URL ?>admin/updateUser/<?= $user['Id'] ?>">
         <input type="hidden" name="Id" value="<?= $user['Id'] ?>">
         <label for="email">User email:</label>
         <input type="text" name="email" value="<?= $user['Email']; ?>" required />
         <br>
         <label for="active">User active state:</label>
-            <select name="active">
+            <select name="Active">
                 <option value="" disabled selected>Selcect a value</option>
                 <option value="1">Active</option>
                 <option value="0">Inactive</option>

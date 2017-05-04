@@ -3,7 +3,7 @@
 function loginUser($Email, $Password){
     $db = openDatabaseConnection();
 
-    $Password = md5(sha1($_POST['Password']));
+    $Password = hash('sha256', $_POST['Password']);
     $Email = $_POST['Email'];
 
     $sql = "SELECT * FROM users WHERE Email=:Email AND Active = 1";
@@ -16,7 +16,10 @@ function loginUser($Email, $Password){
     $Active = $users['Active'];
 
     if($users != null){
+
         if ($Active = 1) {
+            echo $Password . "  " ;
+            echo $users['Password'];
             if($Password == $users['Password'] && $Email == $users['Email']){
 
                 $sql = "SELECT * FROM users WHERE Email=:Email";
@@ -24,6 +27,7 @@ function loginUser($Email, $Password){
                 $query->execute(array(
                     ':Email' => $Email
                 ));
+
                 $user = $query->fetch();
 
                 $Id = $user['Id'];
@@ -37,10 +41,10 @@ function loginUser($Email, $Password){
                 $_SESSION['Active'] = $users['Active'];
                 $_SESSION['isAdmin'] = $users['isAdmin'];
             }else{
-                $message = "This password does not exist. Please try again.";
+                $message = "This password/email does not exist. Please try again.";
             }
         }else{
-            $message = "This account has not been registered yet. Please try again later.";
+            $message = "This account has not been activated yet. Please try again later.";
         }
     }else{
         $message = "This email does not exist. Please try again or register.";
@@ -52,7 +56,7 @@ function loginUser($Email, $Password){
 }
 
 function logoutUser(){
-
+    session_destroy();
 }
 
 function registerUser($Firstname, $Lastname, $Password, $ConfirmPass, $Email){
@@ -80,7 +84,7 @@ function registerUser($Firstname, $Lastname, $Password, $ConfirmPass, $Email){
     if($count == 0){
         $sql = "INSERT INTO users (Firstname, Lastname, Password, Email, Active, isAdmin) VALUES (:Firstname, :Lastname, :Password, :Email, :Active, :isAdmin)";
         $query = $db->prepare($sql);
-        $Password = md5(sha1($Password));
+        $Password = hash('sha256', $Password);
         $query->execute(array(
             ':Firstname' => $Firstname,
             ':Lastname' => $Lastname,

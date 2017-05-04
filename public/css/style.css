@@ -76,13 +76,13 @@ nav#Clear{
 }
 
 #MessageBox {
-    width: 40%;
+    width: 75%;
     height: 50px;
     float: left;
-    margin-left: -20%;
+    padding: 2em;
 }
 
-p.Message {
+.Message {
     margin-top: 14px;
     margin-left: 60px;
 }

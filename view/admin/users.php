@@ -12,9 +12,9 @@
                 <td>Id</td>
                 <td>Email</td>
                 <td>Active</td>
-                <td>isAdmin</td>
-                <td>DELETE</td>
-                <td>EDIT</td>
+                <td>Admin</td>
+                <td>Edit</td>
+                <td>Delete</td>
             </tr>
             </thead>
             <tbody>

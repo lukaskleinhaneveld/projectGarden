@@ -72,20 +72,10 @@ function updateUser($Id){
         };
 
         updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin, $Id);
-        render(array(
+        render("home/index", array(
             'user' => loadUser($Id)
         ));
-
-        var_dump($Firstname);
-        var_dump($Lastname);
-        var_dump($Password);
-        var_dump($Email);
-        var_dump($Active);
-        var_dump($isAdmin);
-        var_dump($user);
-        var_dump($Id);
     }
-    header('location: ' . URL . 'comments/admin');
 }
 
 // Function to display the "admin/users" page

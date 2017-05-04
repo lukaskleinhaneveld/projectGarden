@@ -11,15 +11,10 @@
 <body>
 	<div id="MenuOuter">
 		<div id="Menu">
-			<div id="MessageBox">
-				<?php if(!empty($_SESSION['message'])){ ?>
-					<p class="Message"><?= $_SESSION['message']; ?></p>
-				<?php }?>
-			</div>
 			<nav id="MenuLeft">
 		        <ul>
-		            <li><a href="<?= URL ?>home/index">Home</a></li>
 					<?php if(!empty($_SESSION['LoggedIn'])){ ?>
+			            <li><a href="<?= URL ?>home/index">Home</a></li>
 						<li><a href="<?= URL ?>home/account">Account</a></li>
 					<?php } ?>
 					<?php if(!empty($_SESSION['isAdmin'])){ ?>

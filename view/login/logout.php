@@ -1,6 +1,6 @@
 <div id="Container">
     <h1>Are you sure you want to log out?</h1>
-    <form class="Logout" method="post">
+    <form class="Logout" method="post" method="login/logoutUser">
         <label for="Yes"></label><label for="No"></label>
         <input type="submit" name="Yes" value="Yes"><input type="submit" name="No" value="No">
     </form>
