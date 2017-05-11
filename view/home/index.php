@@ -1,4 +1,4 @@
-<div id="Container">
+
     <div class="slideshow-container">
         <div class="mySlides fade">
             <div class="numbertext">1 / 3</div>
@@ -18,5 +18,5 @@
             <div class="text">Caption Three</div>
         </div>
     </div>
+<div id="Container">
 </div>
-<script src="<?php URL ?>../public/js/slideshow.js"></script>
