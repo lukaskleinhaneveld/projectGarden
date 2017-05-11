@@ -40,3 +40,15 @@ function loadUser($Id){
 
     $db = null;
 }
+
+function loadStock(){
+    $db = openDatabaseConnection();
+
+    $sql = "SELECT * FROM stock";
+    $stocks = $db->prepare($sql);
+    $stocks->execute();
+
+    return $stocks->fetchAll();
+
+    $db = null;
+}

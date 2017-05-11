@@ -1,3 +1,3 @@
-<?php unset($_SESSION['message']); /*highlight_string("<?php\ninput =\n" . var_export($_SESSION, true) . ";\n?>");*/ ?>
+<?php /* highlight_string("<?php\ninput =\n" . var_export($_SESSION['message'], true) . ";\n?>"); */ $_SESSION['message'] = ""; ?>
 </body>
 </html>

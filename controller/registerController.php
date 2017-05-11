@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 require(ROOT."model/loginModel.php");
 

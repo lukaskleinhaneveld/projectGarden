@@ -6,6 +6,7 @@
     <br>
     <ul>
         <li><a href="<?= URL ?>admin/users">Users</a></li>
+        <li><a href="<?= URL ?>admin/stock">Stock</a></li>
     </ul>
 </div>
 <div id="Container">

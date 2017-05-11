@@ -3,7 +3,7 @@
 function loginUser($Email, $Password){
     $db = openDatabaseConnection();
 
-    $sql = "SELECT * FROM users WHERE Email=:Email AND Active = 1";
+    $sql = "SELECT * FROM users WHERE Email=:Email";
     $query = $db->prepare($sql);
     $query->execute(array(
         ':Email' => $Email
@@ -15,7 +15,7 @@ function loginUser($Email, $Password){
 
     if($users != null){
 
-        if ($Active = 1) {
+        if ($Active == 1) {
             echo "User inputted password: " .$Password . "  <br/><br/>" ;
             echo "Password in database: " . $users['Password'];
             if($Password == $users['Password'] && $Email == $users['Email']){
@@ -31,6 +31,8 @@ function loginUser($Email, $Password){
                 $Id = $user['Id'];
                 $Firstname = $user['Firstname'];
                 $Lastname = $user['Lastname'];
+
+                $message = "Logged in!";
 
                 $_SESSION['Id'] = $Id;
                 $_SESSION['Firstname'] = $Firstname;

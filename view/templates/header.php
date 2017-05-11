@@ -7,6 +7,42 @@
 	<link rel="stylesheet" href="<?= URL ?>css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 	<script src="<?php URL ?>../public/js/dropdown.js"></script>
+
+	<!-- requiered links and scripts for the "Draggable" functionality -->
+	<link rel="stylesheet" href="<?= URL ?>css/jquery-ui.min.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+	<style>
+		#draggable { width: 150px; height: 150px; padding: 0.5em; cursor:move; float: left;}
+		#draggable2 { width: 150px; height: 150px; padding: 0.5em; cursor:move; float: left;}
+	</style>
+	<script type="text/javascript" src="<?= URL ?>public/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="<?= URL ?>public/js/jquery-ui-1.12.1.min.js"></script>
+	<script>
+	$( function() {
+		console.log('$( "#draggable" ).draggable();');
+		// here we tell the "draggable" that is should have a "stop" event
+		$( "#draggable" ).draggable({ containment: "#draggableArea", stop: function( event, ui ) {} });
+
+		$( "#draggable" ).on( "dragstop", function( event, ui ) {
+			// this will be executed when dragging stops
+			console.log('stopped dragging: ');
+			console.log(ui);
+		} );
+	} );
+
+	$( function() {
+		console.log('$( "#draggable2" ).draggable();');
+		// here we tell the "draggable" that is should have a "stop" event
+		$( "#draggable2" ).draggable({ containment: "#draggableArea", stop: function( event, ui ) {} });
+
+		$( "#draggable2" ).on( "dragstop", function( event, ui ) {
+			// this will be executed when dragging stops
+			console.log('stopped dragging: ');
+			console.log(ui);
+		} );
+	} );
+	</script>
 </head>
 <body>
 	<div id="MenuOuter">
@@ -15,7 +51,7 @@
 		        <ul>
 					<?php if(!empty($_SESSION['LoggedIn'])){ ?>
 			            <li><a href="<?= URL ?>home/index">Home</a></li>
-						<li><a href="<?= URL ?>home/account">Account</a></li>
+						<li><a href="<?= URL ?>garden/createGarden">Start creating</a></li>
 					<?php } ?>
 					<?php if(!empty($_SESSION['isAdmin'])){ ?>
 						<li><a href="<?= URL ?>admin/index">Admin</a></li>

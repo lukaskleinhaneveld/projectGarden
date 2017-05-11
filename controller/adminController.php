@@ -100,7 +100,7 @@ function users(){
 // This function is activated by the search function in the search bar in "admin/users"
 function findUser(){
     if(!empty($_SESSION['isAdmin'])){
-     
+
         if (isset($_GET['search'])) {
                 // Activates the searchThroughUsers function in the "gardenModel"
                 $results = searchThroughUsers();
@@ -116,4 +116,14 @@ function findUser(){
 
 function deleteUser($Id){
     deleteUserFromDatabase($Id);
+}
+
+function stock(){
+    if(!empty($_SESSION['isAdmin'])){
+        render("admin/stock", array(
+            'stocks' => loadStock()
+        ));
+	}else{
+		header('location: ' . URL . 'login/index');
+    }
 }
