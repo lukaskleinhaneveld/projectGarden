@@ -14,10 +14,12 @@
             </div>
         </div>
     </div>
-    <div id="totalItemsInGarden">
+    <div id="summaryArea">
+        <div id="totalItemsInGarden">
 
-    </div>
-    <div id="costSummary">
+        </div>
+        <div id="costSummary">
 
+        </div>
     </div>
 </div>
