@@ -222,7 +222,7 @@ input[type="submit"] {
     width: auto;
     float: left;
     padding: 5px 35px 15px 20px;
-    height: 2em;
+    height: 3em;
     background-color: rgba(160, 213, 222, 1);
     border-bottom-right-radius: 30px;
     box-shadow: 3px 4px 6px #adadad;

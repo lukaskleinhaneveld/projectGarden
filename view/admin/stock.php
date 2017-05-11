@@ -17,20 +17,20 @@
             <tbody>
                 <?php foreach ($stocks as $stock) { ?>
                     <tr class="stockList">
-                        <td class="content"">
+                        <td class="content">
                             <?= $stock['Id']; ?>
                         </td>
-                        <td class="content"">
+                        <td class="content">
                             <?= $stock['Name']; ?>
                         </td>
-                        <td class="content"">
+                        <td class="content">
                             <?= $stock['Price']; ?>
                         </td>
-                        <td class="content"">
+                        <td class="content">
                             <?= $stock['Amount']; ?>
                         </td>
-                        <td class="content""><a href="<?= URL ?>admin/editStock/<?= $stock['Id'] ?>">Edit</a></td>
-                        <td class="content""><a href="<?= URL ?>admin/deleteStock/<?= $stock['Id'] ?>">Delete</a></td>
+                        <td class="content"><a href="<?= URL ?>admin/editStock/<?= $stock['Id'] ?>">Edit</a></td>
+                        <td class="content"><a href="<?= URL ?>admin/deleteStock/<?= $stock['Id'] ?>">Delete</a></td>
                     </tr>
                     <?php } ?>
             </tbody>
