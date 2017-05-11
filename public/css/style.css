@@ -449,6 +449,11 @@ button.Edit:hover {
     width: 1345px;
 }
 
+#summaryArea {
+    height: 650px;
+    width: 1345px;
+}
+
 * {
     box-sizing: border-box
 }
