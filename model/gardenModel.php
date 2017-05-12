@@ -45,10 +45,10 @@ function loadStock(){
     $db = openDatabaseConnection();
 
     $sql = "SELECT * FROM stock";
-    $stocks = $db->prepare($sql);
-    $stocks->execute();
+    $stock = $db->prepare($sql);
+    $stock->execute();
 
-    return $stocks->fetchAll();
+    return $stock->fetchAll();
 
     $db = null;
 }

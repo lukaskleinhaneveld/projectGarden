@@ -587,3 +587,13 @@ img {
     margin-top: -100px;
     height: 500px;
 }
+.draggable { 
+    width: 150px;
+    height: 150px;
+    padding: 0.5em;
+    cursor:move;
+    float: left;
+    border: solid
+    black 1px;
+    background-color: white;
+}
