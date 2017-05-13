@@ -52,3 +52,19 @@ function loadStock(){
 
     $db = null;
 }
+
+function saveDroppableToDb(){
+    $db = openDatabaseConnection();
+
+    $sql = "INSERT INTO customGardens (User_Id, PosLeft, PosTop) VALUES (:User_Id, :PosLeft, :PosTop)";
+    $garden = $db->prepare($sql);
+    $garden->execute(array(
+        ':User_Id' => $_SESSION['Id'],
+        ':PosLeft' => $posLeft,
+        ':PosTop' => $posTop
+    ));
+
+    return $garden->fetchAll();
+
+    $db = null;
+}

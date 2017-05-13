@@ -1,85 +1,88 @@
 <div id="Container">
-    <div id="draggableArea">
+    <div id="droppableArea">
         <div id="gardenCreation">
-
+            <div id="remove">
+            </div>
         </div>
         <div id="itemShoppingList">
 
+            <?php
+            foreach($stock as $stockItem){
+            ?>
 
-
-
-
-            <h3 class="Items">Flowers</h3>
-        <?php
-        foreach($stock as $stockItem){
-            if($stockItem['Type'] == 'Flower'){
-        ?>
-            <div id="<?= $stockItem['Id'] ?>" class="ui-widget-content draggable">
-                <p>Item: <?= $stockItem['Name'] ?></p><br/>
-                <p>Price: <?= $stockItem['Price'] ?></p><br/>
-            </div>
-        <?php
-            } else if ($stockItem['Type'] == 'Bushe') {
-        ?>
-            <h3 class="Items">Bushes</h3>
-            <div id="<?= $stockItem['Id'] ?>" class="ui-widget-content draggable">
+                <div id="<?= $stockItem['Id'] ?>" class="draggable ui-draggable">
                     <p>Item: <?= $stockItem['Name'] ?></p><br/>
                     <p>Price: <?= $stockItem['Price'] ?></p><br/>
                 </div>
-        <?php
-            } else if($stockItem['Type'] == 'Plant'){
-        ?>
-            <h3 class="Items">Plants</h3>
-            <div id="<?= $stockItem['Id'] ?>" class="ui-widget-content draggable">
-                <p>Item: <?= $stockItem['Name'] ?></p><br/>
-                <p>Price: <?= $stockItem['Price'] ?></p><br/>
-            </div>
-        <?php
+
+            <?php
             }
-        }
-        ?>
-
-
-
+            ?>
 
         </div>
     </div>
-    <div id="summaryArea">
-        <div id="totalItemsInGarden">
+        <div id="summaryArea">
+            <div id="totalItemsInGarden">
 
-        </div>
-        <div id="costSummary">
+            </div>
+            <div id="costSummary">
 
+            </div>
         </div>
-    </div>
 </div>
 
-
 <script type="text/javascript">
-var url = '<?= URL ?>/garden/createGarden';
+//Run this script as soon as the page is loadded
+$(document).ready(
+    $( function () {
 
+        //Setting the options for the draggable objects
+        $( ".draggable" ).draggable({
+            //helper: "clone",
+            addClass: "ui-draggable",
+            appendTo: "#gardenCreation",
+            stack: ".draggable",
+            containment: "#draggableArea",
+        });
 
-$( function() {
-    // here we tell the "draggable" that is should have a "stop" event
-    $( ".draggable" ).draggable({
-        helper: 'clone',
-        //containment: "#draggableArea",
-        stop: function( event, ui ) {
+        //Setting the options for the droppable object
+        $( "#gardenCreation" ).droppable({
+            greedy: true,
+            drop: function( event, ui ) {
+                var posLeft = ui.position.left;
+                var posTop = ui.position.top;
 
-        }
-    });
-    // as soon as we stop dragging, we send an AJAX POST request
-    $( "#gardenCreation" ).droppable({
-        accept: ".draggable",
-        drop: function(e, ui) {
-            dragElement = ui.helper.clone();
+                var drag_id = $(ui.draggable).attr("id");
+                var targetElem = $(this).attr("id");
 
-            dragElement.appendTo(".draggable");
-            console.log("test drop!");
-            $( "#gardenCreation" ).style.background-color="black";
-        }
-    });
+                console.log( "Element with id " + $(".draggable").attr("id") + "'s  " + "position-x: " + posLeft + " and position-y: " + posTop );
 
-});
+                $("#gardenCreation").find('#gardenCreation').append(ui.draggable);
+
+                $.ajax({
+                    method: "post",
+                    dataType: "json",
+                    url: "<?= URL ?>/garden/saveDroppablePosition",
+                    data: { posLeft: posLeft, posTop: posTop }
+                })
+                .done(function(data){
+
+                    $("#costSummary").html(data);
+                    console.log("Data: " + data);
+                });
+            },
+        });
+
+        $('#remove').droppable({
+            over: function(event, ui) {
+                ui.helper.remove();
+
+                $(".droppable").addClass('ui-draggable');
+            }
+        });
+
+    //End of the function that's ran on loading the page
+    })
+);
 
 </script>
