@@ -38,7 +38,7 @@ $(document).ready(
 
         //Setting the options for the draggable objects
         $( ".draggable" ).draggable({
-            //helper: "clone",
+            helper: "clone",
             addClass: "ui-draggable",
             appendTo: "#gardenCreation",
             stack: ".draggable",
@@ -55,9 +55,9 @@ $(document).ready(
                 var drag_id = $(ui.draggable).attr("id");
                 var targetElem = $(this).attr("id");
 
-                console.log( "Element with id " + $(".draggable").attr("id") + "'s  " + "position-x: " + posLeft + " and position-y: " + posTop );
+                $("#costSummary").html( "Element with id " + $(".draggable").attr("id") + "'s  " + "position-x: " + posLeft + " and position-y: " + posTop );
 
-                $("#gardenCreation").find('#gardenCreation').append(ui.draggable);
+                $("#droppableArea").find('#gardenCreation').append(ui.helper);
 
                 $.ajax({
                     method: "post",
@@ -70,6 +70,7 @@ $(document).ready(
                     $("#costSummary").html(data);
                     console.log("Data: " + data);
                 });
+                //ui.draggable.detach().css({top: 0,left: 0}).appendTo($(this));
             },
         });
 
