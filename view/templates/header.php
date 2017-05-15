@@ -18,7 +18,7 @@
 	<script type="text/javascript">
 		$(document).ready(
 			function(){
-				$("#itemShoppingList").accordion();
+				$("#itemShoppingList ul").accordion();
 	});
 	</script>
 </head>
