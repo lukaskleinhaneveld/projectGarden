@@ -127,3 +127,12 @@ function stock(){
 		header('location: ' . URL . 'login/index');
     }
 }
+
+function createStock(){
+    if(!empty($_SESSION['isAdmin'])){
+        render("admin/createStock");
+        createStocks();
+	}else{
+		header('location: ' . URL . 'login/index');
+    }
+}

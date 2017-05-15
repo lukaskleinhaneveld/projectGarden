@@ -3,6 +3,7 @@
 </div>
 <div id="Container">
     <div class="stockList">
+       <a href="<?= URL ?>admin/createStock">create</a>
         <table>
             <thead style="background-color: #ddd; font-weight: bold;">
                 <tr>
