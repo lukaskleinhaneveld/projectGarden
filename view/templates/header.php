@@ -12,15 +12,6 @@
 	<link rel="stylesheet" href="<?= URL ?>css/jquery-ui.min.css">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="<?= URL ?>public/js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="<?= URL ?>public/js/jquery-ui-1.12.1.min.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(
-			function(){
-				$("#itemShoppingList ul").accordion();
-	});
-	</script>
 </head>
 <body>
 	<div id="MenuOuter">
