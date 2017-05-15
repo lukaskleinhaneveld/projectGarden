@@ -21,20 +21,20 @@
             <tbody>
                 <?php foreach ($users as $user) { ?>
                     <tr>
-                        <td style=" padding:2px 5px;">
+                        <td class = "content">
                             <?= $user['Id']; ?>
                         </td>
-                        <td style=" padding:2px 5px;">
+                        <td class = "content">
                             <?= $user['Email']; ?>
                         </td>
-                        <td style=" padding:2px 5px;">
+                        <td class = "content">
                             <?= $user['Active']; ?>
                         </td>
-                        <td style=" padding:2px 5px;">
+                        <td class = "content">
                             <?= $user['isAdmin']; ?>
                         </td>
-                        <td style=" padding:2px 5px;"><a href="<?= URL ?>admin/editUser/<?= $user['Id'] ?>">Edit</a></td>
-                        <td style=" padding:2px 5px;"><a href="<?= URL ?>admin/deleteUser/<?= $user['Id'] ?>">Delete</a></td>
+                        <td class = "content"><a href="<?= URL ?>admin/editUser/<?= $user['Id'] ?>">Edit</a></td>
+                        <td class = "content"><a href="<?= URL ?>admin/deleteUser/<?= $user['Id'] ?>">Delete</a></td>
                     </tr>
                     <?php } ?>
             </tbody>

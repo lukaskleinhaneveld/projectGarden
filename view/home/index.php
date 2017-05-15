@@ -1,5 +1,6 @@
 
-    <div class="slideshow-container">
+
+<div class="slideshow-container">
         <div class="mySlides fade">
             <div class="numbertext">1 / 3</div>
             <img src="<?php URL ?>../img/gardenin(preview)" style="width:100%">

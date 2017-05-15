@@ -222,7 +222,7 @@ input[type="submit"] {
     width: auto;
     float: left;
     padding: 5px 35px 15px 20px;
-    height: 2em;
+    height: 3em;
     background-color: rgba(160, 213, 222, 1);
     border-bottom-right-radius: 30px;
     box-shadow: 3px 4px 6px #adadad;
@@ -420,10 +420,14 @@ button.Edit:hover {
 #itemShoppingList {
     background-color: purple;
     width: 350px;
+    max-width: 350px;
     height: 650px;
+    max-height: 650px;
     float: right;
     clear: right;
     margin-top: -75px;
+    overflow-y: scroll;
+    padding: 15px;
 }
 
 #totalItemsInGarden {
@@ -586,4 +590,25 @@ button.Edit:hover {
 img {
     margin-top: -100px;
     height: 500px;
+}
+.draggable {
+    width: 150px;
+    max-width: 150px;
+    height: 150px;
+    max-height: 150px;
+    padding: 0.5em;
+    cursor:move;
+    float: left;
+    border: solid black 1px;
+    background-color: white;
+    z-index: 20;
+}
+
+#remove{
+    float: left;
+    width: 75px;
+    height: 75px;
+    background-color: rgba(135, 135, 135, 1);
+    border-radius: 5px;
+    margin: 15px 15px;
 }
