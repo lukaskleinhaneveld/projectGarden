@@ -100,5 +100,25 @@ function createStocks(){
     $_SESSION['message'] = $message;
 }
 
-    
+function deleteStockFromDatabase($Id){
+    $db = openDatabaseConnection();
+
+    $sql = "DELETE FROM stock WHERE Id = :Id";
+    $result = $db->prepare($sql);
+    $parameters = array(
+        ':Id' => $Id
+    );
+    $result->execute($parameters);
+    $db = null;
+
+    if($result->rowCount() < 1){
+        $message = "Failed to delete stock.";
+        header('Location: ' . URL . 'admin/stock');
+    }else{
+        $message = "Successfully deleted stock.";
+        header('Location: ' . URL . 'admin/stock');
+    }
+
+    $_SESSION['message'] = $message;
+}
 	
