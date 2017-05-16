@@ -608,3 +608,8 @@ img {
     border-radius: 5px;
     margin: 15px 15px;
 }
+
+.literally.toolbar-at-top {
+    width: 975px;
+    height: 650px;
+}
