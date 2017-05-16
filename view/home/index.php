@@ -21,3 +21,4 @@
     </div>
 <div id="Container">
 </div>
+<script type="text/javascript" src="<?= URL ?>/js/slideshow.js"></script>

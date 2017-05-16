@@ -18,6 +18,18 @@ function index(){
 	}
 }
 
+function test(){
+    if($_SESSION['isAdmin'] != 1){
+        $message = "You are not authorized to go to that page";
+        $_SESSION['message'] = $message;
+		header('location: ' . URL . 'home/index');
+	}else{
+		render("admin/test", array(
+            'stock' => loadStock()
+        ));
+	}
+}
+
 // This function displays the "admin/user" page
 function editUser($Id){
     if(empty($_SESSION['isAdmin'])){

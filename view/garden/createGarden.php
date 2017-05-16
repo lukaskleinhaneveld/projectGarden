@@ -38,16 +38,14 @@ $(document).ready(
 
         //Setting the options for the draggable objects
         $( ".draggable" ).draggable({
-            helper: "clone",
-            addClass: "ui-draggable",
-            appendTo: "#gardenCreation",
-            stack: ".draggable",
-            containment: "#draggableArea",
+            helper: "clone"
         });
 
         //Setting the options for the droppable object
         $( "#gardenCreation" ).droppable({
-            greedy: true,
+            //greedy: true,
+            containment: "#draggableArea",
+            stack: ".draggable",
             drop: function( event, ui ) {
                 var posLeft = ui.position.left;
                 var posTop = ui.position.top;
@@ -55,9 +53,7 @@ $(document).ready(
                 var drag_id = $(ui.draggable).attr("id");
                 var targetElem = $(this).attr("id");
 
-                $("#costSummary").html( "Element with id " + $(".draggable").attr("id") + "'s  " + "position-x: " + posLeft + " and position-y: " + posTop );
-
-                $("#droppableArea").find('#gardenCreation').append(ui.helper);
+                $(this).append($(ui.helper).clone());
 
                 $.ajax({
                     method: "post",
@@ -66,24 +62,21 @@ $(document).ready(
                     data: { posLeft: posLeft, posTop: posTop }
                 })
                 .done(function(data){
-
-                    $("#costSummary").html(data);
-                    console.log("Data: " + data);
+                    $("#costSummary") += innerHTML( "Element with id " + $(".draggable").attr("id") + "'s  " + "position-x: " + posLeft + " and position-y: " + posTop );
                 });
                 //ui.draggable.detach().css({top: 0,left: 0}).appendTo($(this));
             },
         });
 
         $('#remove').droppable({
-            over: function(event, ui) {
+            hover: function(event, ui) {
                 ui.helper.remove();
-
-                $(".droppable").addClass('ui-draggable');
             }
         });
 
     //End of the function that's ran on loading the page
     })
+
 );
 
 </script>

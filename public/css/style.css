@@ -458,11 +458,6 @@ button.Edit:hover {
     width: 1345px;
 }
 
-* {
-    box-sizing: border-box
-}
-
-
 /*slideshow*/
 
 * {
@@ -591,6 +586,7 @@ img {
     margin-top: -100px;
     height: 500px;
 }
+
 .draggable {
     width: 150px;
     max-width: 150px;
