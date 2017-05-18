@@ -148,3 +148,45 @@ function createStock(){
 		header('location: ' . URL . 'login/index');
     }
 }
+function deleteStock($Id){
+    deleteStockFromDatabase($Id);
+}
+
+function updateStock($Id){
+    if(empty($_SESSION['isAdmin'])){
+        header('location: ' . URL . 'home/index');
+        $message = "You are not authorised to do that.";
+    }else{
+        $user = loadUser($Id);
+        loadUser($Id);
+        // Check if the user has changed their info, else: use the know information
+        if(isset($_POST['submit_update_user'])){
+            if(isset($_POST['Name'])){
+                $Name = $_POST['Name'];
+            }else{
+                $Name = $user['Name'];
+            };
+            if(isset($_POST['Price'])){
+                $Price = $_POST['Price'];
+            }else{
+                $Price = $user['Price'];
+            };
+            if(isset($_POST['Amount'])){
+                $Amount = $_POST['Amount'];
+            }else{
+                $Amount = $user['Amount'];
+            };
+            if(isset($_POST['isAdmin'])){
+                $isAdmin = $_POST['isAdmin'];
+            }else{
+                $isAdmin = $user['isAdmin'];
+            };
+
+            updateeStock($Name, $Price, $Amount, $isAdmin, $Id);
+            render("home/index", array(
+                'user' => loadUser($Id)
+            ));
+            header('Location: ' . URL . 'admin/users');
+        }
+    }
+}

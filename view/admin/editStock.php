@@ -3,7 +3,7 @@
     <h1>Edit stock</h1>
 </div>
 <div id="Container">
-    <form class="adminAdminEditUserForm" method="POST" action="<?= URL ?>admin/updateUser/<?= $stock['Id'] ?>">
+    <form class="adminAdminEditUserForm" method="POST" action="<?= URL ?>admin/editStock/<?= $stock['Id'] ?>">
         <input type="hidden" name="Id" value="<?= $stock['Id'] ?>">
         <label for="Name">Name:</label>
         <input type="text" name="Name" value="<?= $stock['Name']; ?>" required />
