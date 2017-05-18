@@ -10,7 +10,7 @@
             foreach($stock as $stockItem){
             ?>
 
-                <div id="<?= $stockItem['Id'] ?>" class="draggable ui-draggable">
+                <div id="<?= $stockItem['Id'] ?>" class="draggable ui-draggable" onmouseover="drag()">
                     <p>Item: <?= $stockItem['Name'] ?></p><br/>
                     <p>Price: <?= $stockItem['Price'] ?></p><br/>
                 </div>
@@ -32,9 +32,7 @@
 </div>
 
 <script type="text/javascript">
-//Run this script as soon as the page is loadded
-$(document).ready(
-    $( function () {
+function drag () {
 
         //Setting the options for the draggable objects
         $( ".draggable" ).draggable({
@@ -75,7 +73,7 @@ $(document).ready(
         });
 
     //End of the function that's ran on loading the page
-    })
+    }
 
 );
 
