@@ -1,5 +1,6 @@
 <?php
 require(ROOT."model/gardenModel.php");
+require(ROOT."model/adminModel.php");
 
 function index(){
 	if(!empty($_SESSION['LoggedIn'])){

@@ -2,7 +2,7 @@
     <h1>Edit user</h1>
 </div>
 <div id="Container">
-    <form class="adminAdminEditUserForm" method="POST" action="<?= URL ?>admin/editStock/<?= $user['Id'] ?>">
+    <form class="adminAdminEditUserForm" method="POST" action="<?= URL ?>admin/updateUser/<?= $user['Id'] ?>">
         <input type="hidden" name="Id" value="<?= $user['Id'] ?>">
         <label for="email">User email:</label>
         <input type="text" name="email" value="<?= $user['Email']; ?>" required />
