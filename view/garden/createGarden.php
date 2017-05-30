@@ -7,7 +7,7 @@
         <div id="itemShoppingList">
 
             <?php
-            foreach($stock as $stockItem){
+            foreach($stocks as $stockItem){
             ?>
 
                 <div id="<?= $stockItem['Id'] ?>" class="draggable ui-draggable" onmouseover="drag()">
