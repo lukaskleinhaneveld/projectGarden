@@ -25,7 +25,7 @@ function test(){
 		header('location: ' . URL . 'home/index');
 	}else{
 		render("admin/test", array(
-            'stock' => loadStock()
+            'stock' => loadStocks()
         ));
 	}
 }
@@ -92,7 +92,7 @@ function updateUser($Id){
             render("home/index", array(
                 'user' => loadUser($Id)
             ));
-            header('Location: ' . URL . 'admin/users');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }
 }
@@ -133,7 +133,7 @@ function deleteUser($Id){
 function stock(){
     if(!empty($_SESSION['isAdmin'])){
         render("admin/stock", array(
-            'stocks' => loadStock()
+            'stocks' => loadStocks()
         ));
 	}else{
 		header('location: ' . URL . 'login/index');
@@ -152,41 +152,37 @@ function deleteStock($Id){
     deleteStockFromDatabase($Id);
 }
 
-function updateStock($Id){
+function editStock($Id){
     if(empty($_SESSION['isAdmin'])){
         header('location: ' . URL . 'home/index');
         $message = "You are not authorised to do that.";
     }else{
-        $user = loadUser($Id);
-        loadUser($Id);
-        // Check if the user has changed their info, else: use the know information
-        if(isset($_POST['submit_update_user'])){
+        $stock = loadStock($Id);
+        loadStock($Id);
+        // Check if the admin has changed the stock info, else: use the know information
+        if(isset($_POST['submit_update_stock'])){
             if(isset($_POST['Name'])){
                 $Name = $_POST['Name'];
             }else{
-                $Name = $user['Name'];
+                $Name = $stock['Name'];
             };
             if(isset($_POST['Price'])){
                 $Price = $_POST['Price'];
             }else{
-                $Price = $user['Price'];
+                $Price = $stock['Price'];
             };
             if(isset($_POST['Amount'])){
                 $Amount = $_POST['Amount'];
             }else{
-                $Amount = $user['Amount'];
-            };
-            if(isset($_POST['isAdmin'])){
-                $isAdmin = $_POST['isAdmin'];
-            }else{
-                $isAdmin = $user['isAdmin'];
+                $Amount = $stock['Amount'];
             };
 
-            updateeStock($Name, $Price, $Amount, $isAdmin, $Id);
-            render("home/index", array(
-                'user' => loadUser($Id)
-            ));
-            header('Location: ' . URL . 'admin/users');
+            updateeStock($Name, $Price, $Amount, $Id);
+
+            header('Location: ' . URL . 'admin/stock');
         }
+            render("admin/editStock", array(
+                'stock' => loadStock($Id)
+            ));
     }
 }

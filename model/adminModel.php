@@ -82,38 +82,6 @@ function updateeStock($Name, $Price, $Amount,$Id){
     $_SESSION['message'] = $message;
 }
 
-function createStocks(){
-    $db = openDatabaseConnection();
-
-    $Name = isset($_POST['Name']) ? $_POST['Name'] : null;
-	$Price = isset($_POST['Price']) ? $_POST['Price'] : null;
-	$Amount = isset($_POST['Amount']) ? $_POST['Amount'] : null;
-
-	if (strlen($Name) == 0 || strlen($Price) == 0 || strlen($Amount) == 0) {
-		return false;
-	}
-
-   $sql = "INSERT INTO stock(Name, Price, Amount) VALUES (:Name, :Price, :Amount)";
-    $query = $db->prepare($sql);
-	$query->execute(array(
-		':Name' => $Name,
-		':Price' => $Price,
-		':Amount' => $Amount
-    ));
-
-    $db = null;
-
-
-    if($query->rowCount() >= 1){
-        echo "Bitch we made it";
-        $message = "Successfully created new stock";
-    }else{
-        $message = "An error accured while trying to create stock, please try again";
-    }
-    header('Location: ' . URL . 'admin/stock');
-    $_SESSION['message'] = $message;
-}
-
 function deleteStockFromDatabase($Id){
     $db = openDatabaseConnection();
 

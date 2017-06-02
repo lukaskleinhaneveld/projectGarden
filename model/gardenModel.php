@@ -41,14 +41,29 @@ function loadUser($Id){
     $db = null;
 }
 
-function loadStock(){
+function loadStocks(){
     $db = openDatabaseConnection();
 
     $sql = "SELECT * FROM stock";
-    $stock = $db->prepare($sql);
-    $stock->execute();
+    $stocks = $db->prepare($sql);
+    $stocks->execute();
 
-    return $stock->fetchAll();
+    return $stocks->fetchAll();
+
+    $db = null;
+}
+
+function loadStock($Id){
+    $db = openDatabaseConnection();
+
+    $sql = "SELECT * FROM stock WHERE Id = :Id LIMIT 1";
+    $stock = $db->prepare($sql);
+    $parameters = array(
+        ':Id' => $Id
+    );
+    $stock->execute($parameters);
+
+    return $stock->fetch();
 
     $db = null;
 }

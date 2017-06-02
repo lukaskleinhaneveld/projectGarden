@@ -19,12 +19,11 @@ function loginProcess()
     loginUser($Email, $Password);
 
     if (isset($_SESSION['Firstname']) && isset($_SESSION['Lastname'])) {
-        header('Location: ' . URL . 'home/account');
+        header('Location: ' . URL . 'home/index');
     } else {
         header('Location: ' . URL . 'login/index');
         $message = "Login failed!";
     }
-   // $_SESSION['message'] = $message;
 
 
 }
