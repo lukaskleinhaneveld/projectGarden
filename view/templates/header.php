@@ -12,17 +12,6 @@
 	<link rel="stylesheet" href="<?= URL ?>css/jquery-ui.min.css">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
-
-	<!-- Scripts and stylesheets for drawing the garden -->
-	<!-- stylesheet -->
-   	<link href="<?= URL ?>/css/literallycanvas.css" rel="stylesheet">
-
-   	<!-- dependency: React.js -->
-   	<script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js"></script>
-   	<script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
-
-   	<!-- Literally Canvas -->
-   	<script src="<?= URL ?>/js/literallycanvas.js"></script>
 </head>
 <body>
 	<div id="MenuOuter">
@@ -33,7 +22,7 @@
 			            <li><a href="<?= URL ?>home/index">Home</a></li>
 						<li><a href="<?= URL ?>garden/createGarden">Start creating</a></li>
 					<?php } ?>
-					<?php if(!empty($_SESSION['isAdmin'])){ ?>
+					<?php if(!empty($_SESSION['isTeacher'])){ ?>
 						<li><a href="<?= URL ?>admin/index">Admin</a></li>
 					<?php } ?>
 		        </ul>

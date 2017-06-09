@@ -67,20 +67,6 @@ function loadStock($Id){
 
     $db = null;
 }
-function loadStock($Id){
-    $db = openDatabaseConnection();
-
-    $sql = "SELECT * FROM stock WHERE Id = :Id LIMIT 1";
-    $user = $db->prepare($sql);
-    $parameters = array(
-        ':Id' => $Id
-    );
-    $user->execute($parameters);
-
-    return $user->fetch();
-
-    $db = null;
-}
 
 function saveDroppableToDb(){
     $db = openDatabaseConnection();

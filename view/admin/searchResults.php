@@ -31,7 +31,7 @@
                             <?= $result['Active']; ?>
                         </td>
                         <td style=" padding:2px 5px;">
-                            <?= $result['isAdmin']; ?>
+                            <?= $result['isTeacher']; ?>
                         </td>
                         <td style=" padding:2px 5px;"><a href="<?= URL ?>admin/editUser/<?= $result['Id'] ?>">Edit</a></td>
                         <td style=" padding:2px 5px;"><a href="<?= URL ?>admin/deleteUser/<?= $result['Id'] ?>">Delete</a></td>

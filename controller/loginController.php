@@ -24,8 +24,6 @@ function loginProcess()
         header('Location: ' . URL . 'login/index');
         $message = "Login failed!";
     }
-
-
 }
 
 function logout()
