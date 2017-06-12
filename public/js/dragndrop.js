@@ -26,8 +26,6 @@ function drop(){
             $(this).append($(ui.helper).clone().draggable({
                 containment: "parent"
             }));
-
-            $(".draggable").attr("id")
         }
     });
 
