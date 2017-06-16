@@ -613,3 +613,24 @@ img {
     width: 975px;
     height: 650px;
 }
+div#text1 {
+    background-color: blue;
+    width: 50%;
+    height: 500px;
+    float: left;
+}
+div#text2 {
+    background-color: blue;
+    width: 50%;
+    height: 500px;
+    float: right;
+}
+img.img-preview {
+    margin-top: 0.1px;
+}
+h1.create-link {
+    margin-top: -50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 440px;
+}
