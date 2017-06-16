@@ -1,12 +1,12 @@
 <?php
 
 // This function does the database sided updating for the users
-function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin, $Id){
+function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isTeacher, $Id){
     $db = openDatabaseConnection();
 
     //$Password = hash('sha256', $Password);
 
-    $sql = "UPDATE users SET Firstname = :Firstname, Lastname = :Lastname, Password = :Password, Email = :Email, Active = :Active, isAdmin = :isAdmin WHERE Id = :Id";
+    $sql = "UPDATE users SET Firstname = :Firstname, Lastname = :Lastname, Password = :Password, Email = :Email, Active = :Active, isTeacher = :isTeacher WHERE Id = :Id";
     $query = $db->prepare($sql);
     $query->execute(array(
         ':Firstname' => $Firstname,
@@ -14,7 +14,7 @@ function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin
         ':Password' => $Password,
         ':Email' => $Email,
         ':Active' => $Active,
-        ':isAdmin' => $isAdmin,
+        ':isTeacher' => $isTeacher,
         ':Id' => $Id
     ));
 
@@ -79,38 +79,6 @@ function updateeStock($Name, $Price, $Amount,$Id){
     $db = null;
 
     $message = "Successfully updated info";
-    $_SESSION['message'] = $message;
-}
-
-function createStocks(){
-    $db = openDatabaseConnection();
-
-    $Name = isset($_POST['Name']) ? $_POST['Name'] : null;
-	$Price = isset($_POST['Price']) ? $_POST['Price'] : null;
-	$Amount = isset($_POST['Amount']) ? $_POST['Amount'] : null;
-
-	if (strlen($Name) == 0 || strlen($Price) == 0 || strlen($Amount) == 0) {
-		return false;
-	}
-
-   $sql = "INSERT INTO stock(Name, Price, Amount) VALUES (:Name, :Price, :Amount)";
-    $query = $db->prepare($sql);
-	$query->execute(array(
-		':Name' => $Name,
-		':Price' => $Price,
-		':Amount' => $Amount
-    ));
-
-    $db = null;
-
-
-    if($query->rowCount() >= 1){
-        echo "Bitch we made it";
-        $message = "Successfully created new stock";
-    }else{
-        $message = "An error accured while trying to create stock, please try again";
-    }
-    header('Location: ' . URL . 'admin/stock');
     $_SESSION['message'] = $message;
 }
 

@@ -600,6 +600,11 @@ img {
     z-index: 20;
 }
 
+#droppableArea {
+    width: 1344px;
+    height: 650px;
+}
+
 #remove{
     float: left;
     width: 75px;

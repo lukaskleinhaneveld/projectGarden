@@ -1,4 +1,4 @@
-	<?php
+<?php
 
 require(ROOT."model/loginModel.php");
 
@@ -20,7 +20,6 @@ function registerProcess(){
         $ConfirmPass = $_POST['ConfirmPass'];
 
 		registerUser($Firstname, $Lastname, $Password, $ConfirmPass, $Email);
-		//header('Location: '.URL.'login/index');
 	}else{
         $message = "The form method has been set incorrectly!";
 		$_SESSION['message'] = $message;

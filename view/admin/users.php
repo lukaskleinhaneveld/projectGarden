@@ -31,7 +31,7 @@
                             <?= $user['Active']; ?>
                         </td>
                         <td class = "content">
-                            <?= $user['isAdmin']; ?>
+                            <?= $user['isTeacher']; ?>
                         </td>
                         <td class = "content"><a href="<?= URL ?>admin/editUser/<?= $user['Id'] ?>">Edit</a></td>
                         <td class = "content"><a href="<?= URL ?>admin/deleteUser/<?= $user['Id'] ?>">Delete</a></td>

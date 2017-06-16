@@ -15,7 +15,7 @@
             </select>
         <br>
         <label for="active">User is admin:</label>
-            <select name="isAdmin">
+            <select name="isTeacher">
                 <option value="" disabled selected>Selcect a value</option>
                 <option value="1">Admin</option>
                 <option value="0">No Admin</option>

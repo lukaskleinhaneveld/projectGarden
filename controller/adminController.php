@@ -7,7 +7,7 @@ require(ROOT."model/loginModel.php");
 
 // This function displays the "admin/index" page
 function index(){
-    if($_SESSION['isAdmin'] != 1){
+    if($_SESSION['isTeacher'] != 1){
         $message = "You are not authorized to go to that page";
         $_SESSION['message'] = $message;
 		header('location: ' . URL . 'home/index');
@@ -19,20 +19,20 @@ function index(){
 }
 
 function test(){
-    if($_SESSION['isAdmin'] != 1){
+    if($_SESSION['isTeacher'] != 1){
         $message = "You are not authorized to go to that page";
         $_SESSION['message'] = $message;
 		header('location: ' . URL . 'home/index');
 	}else{
 		render("admin/test", array(
-            'stocks' => loadStocks()
+            'stock' => loadStocks()
         ));
 	}
 }
 
 // This function displays the "admin/user" page
 function editUser($Id){
-    if(empty($_SESSION['isAdmin'])){
+    if(empty($_SESSION['isTeacher'])){
         header('location: ' . URL . 'admin/users');
     }else{
         if (isset($Id)) {
@@ -49,7 +49,7 @@ function editUser($Id){
 
 // This function updates the user information
 function updateUser($Id){
-    if(empty($_SESSION['isAdmin'])){
+    if(empty($_SESSION['isTeacher'])){
         header('location: ' . URL . 'home/index');
         $message = "You are not authorised to do that.";
     }else{
@@ -82,17 +82,17 @@ function updateUser($Id){
             }else{
                 $Active = $user['Active'];
             };
-            if(isset($_POST['isAdmin'])){
-                $isAdmin = $_POST['isAdmin'];
+            if(isset($_POST['isTeacher'])){
+                $isTeacher = $_POST['isTeacher'];
             }else{
-                $isAdmin = $user['isAdmin'];
+                $isTeacher = $user['isTeacher'];
             };
 
-            updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin, $Id);
+            updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isTeacher, $Id);
             render("home/index", array(
                 'user' => loadUser($Id)
             ));
-            header('Location: ' . URL . 'admin/users');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }
 }
@@ -111,7 +111,7 @@ function users(){
 
 // This function is activated by the search function in the search bar in "admin/users"
 function findUser(){
-    if(!empty($_SESSION['isAdmin'])){
+    if(!empty($_SESSION['isTeacher'])){
 
         if (isset($_GET['search'])) {
                 // Activates the searchThroughUsers function in the "gardenModel"
@@ -131,7 +131,7 @@ function deleteUser($Id){
 }
 
 function stock(){
-    if(!empty($_SESSION['isAdmin'])){
+    if(!empty($_SESSION['isTeacher'])){
         render("admin/stock", array(
             'stocks' => loadStocks()
         ));
@@ -141,7 +141,7 @@ function stock(){
 }
 
 function createStock(){
-    if(!empty($_SESSION['isAdmin'])){
+    if(!empty($_SESSION['isTeacher'])){
         render("admin/createStock");
         createStocks();
 	}else{
@@ -153,7 +153,7 @@ function deleteStock($Id){
 }
 
 function editStock($Id){
-    if(empty($_SESSION['isAdmin'])){
+    if(empty($_SESSION['isTeacher'])){
         header('location: ' . URL . 'home/index');
         $message = "You are not authorised to do that.";
     }else{
