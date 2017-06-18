@@ -19,6 +19,14 @@
             <div class="text">Caption Three</div>
         </div>
     </div>
+    <div id="text1" class="text1">
+<img class="img-preview"src="<?php URL ?>../img/view-creategarden" style="width:100%">
+<a href="<?= URL ?>garden/createGarden"><h1 class="create-link">create your garden here</h1></a>
+</div>
+    <div id="text2" class="text2">
+    <p>text</p>
+</div>
 <div id="Container">
+
 </div>
 <script type="text/javascript" src="<?= URL ?>/js/slideshow.js"></script>
