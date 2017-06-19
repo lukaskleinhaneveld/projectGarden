@@ -8,6 +8,19 @@ function drop(){
             counter = $(this).attr("class") + " " +count++;
             $(this).addClass(counter);
             console.log(counter);
+
+            var counted1 = $("div[id*=1]").length;
+            console.log("Amount of divs with id 1: " + counted1);
+
+
+
+            var counted2 = $("div[id*=2]").length;
+            console.log("Amount of divs with id 2: " + counted2);
+
+
+
+            var counted3 = $("div[id*=3]").length;
+            console.log("Amount of divs with id 3: " + counted3);
         }
     });
 
@@ -33,9 +46,11 @@ function drop(){
         }
     });
 
-    $('.draggable').dblclick(function(event, ui) {
-        console.log("Deleted item with ID: " + $(".draggable").attr("id"));
-        $(this).remove();
+    $('#gardenCreation').mouseenter(function(){
+        $('.draggable').dblclick(function(event, ui) {
+            console.log("Deleted item with ID: " + $(".draggable").attr("id"));
+            $(this).remove();
+        });
     });
 
 }
