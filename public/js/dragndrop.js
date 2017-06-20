@@ -4,24 +4,10 @@ function drop(){
         revert: "invalid",
         helper: "clone",
         containment: "#droppableArea",
-        start: function (event, ui){
-            counter = $(this).attr("class") + " " +count++;
-            $(this).addClass(counter);
+        stop: function (event, ui){
+            var counted = $("#gardenCreation > div[id*=" + $(this).attr("id") + "]").length;
+            console.log("Amount of divs with id " + $(this).attr("id") + ": " + counted);
 
-            console.log(counter);
-
-            var counted1 = $("div[id*=1]").length;
-            console.log("Amount of divs with id 1: " + counted1);
-
-
-
-            var counted2 = $("div[id*=2]").length;
-            console.log("Amount of divs with id 2: " + counted2);
-
-
-
-            var counted3 = $("div[id*=3]").length;
-            console.log("Amount of divs with id 3: " + counted3);
         }
     });
 
