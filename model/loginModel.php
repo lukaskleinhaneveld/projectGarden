@@ -39,7 +39,7 @@ function loginUser($Email, $Password){
                 $_SESSION['Lastname'] = $Lastname;
                 $_SESSION['LoggedIn'] = 1;
                 $_SESSION['Active'] = $users['Active'];
-                $_SESSION['isTeacher'] = $users['isTeacher'];
+                $_SESSION['isAdmin'] = $users['isAdmin'];
             }else{
                 $message = "This password/email does not exist. Please try again.";
             }
@@ -68,7 +68,7 @@ function registerUser($Firstname, $Lastname, $Password, $ConfirmPass, $Email){
 	$Password = isset($_POST['Password']) ? $_POST['Password'] : '';
 	$ConfirmPass = isset($_POST['ConfirmPassword']) ? $_POST['ConfirmPassword'] : '';
     $Active = 0;
-    $isTeacher = 0;
+    $isAdmin = 0;
 
     if (strlen($Firstname) == 0 || strlen($Lastname) == 0 || strlen($Password) == 0 || strlen($ConfirmPass) == 0 || strlen($Email) == 0) {
 		$message = "Niet alle velden zijn correct ingevuld";
@@ -82,7 +82,7 @@ function registerUser($Firstname, $Lastname, $Password, $ConfirmPass, $Email){
     $count = $query->rowCount();
 
     if($count == 0){
-        $sql = "INSERT INTO users (Firstname, Lastname, Password, Email, Active, isTeacher) VALUES (:Firstname, :Lastname, :Password, :Email, :Active, :isTeacher)";
+        $sql = "INSERT INTO users (Firstname, Lastname, Password, Email, Active, isAdmin) VALUES (:Firstname, :Lastname, :Password, :Email, :Active, :isAdmin)";
         $query = $db->prepare($sql);
         $Password = hash('sha256', $Password);
         $query->execute(array(
@@ -91,7 +91,7 @@ function registerUser($Firstname, $Lastname, $Password, $ConfirmPass, $Email){
             ':Email' => $Email,
             ':Password' => $Password,
             ':Active' => $Active,
-            ':isTeacher' => $isTeacher
+            ':isAdmin' => $isAdmin
         ));
 
         $message = "You have successfully been registered!";

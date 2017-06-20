@@ -1,12 +1,12 @@
 <?php
 
 // This function does the database sided updating for the users
-function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isTeacher, $Id){
+function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin, $Id){
     $db = openDatabaseConnection();
 
     //$Password = hash('sha256', $Password);
 
-    $sql = "UPDATE users SET Firstname = :Firstname, Lastname = :Lastname, Password = :Password, Email = :Email, Active = :Active, isTeacher = :isTeacher WHERE Id = :Id";
+    $sql = "UPDATE users SET Firstname = :Firstname, Lastname = :Lastname, Password = :Password, Email = :Email, Active = :Active, isAdmin = :isAdmin WHERE Id = :Id";
     $query = $db->prepare($sql);
     $query->execute(array(
         ':Firstname' => $Firstname,
@@ -14,7 +14,7 @@ function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isTeach
         ':Password' => $Password,
         ':Email' => $Email,
         ':Active' => $Active,
-        ':isTeacher' => $isTeacher,
+        ':isAdmin' => $isAdmin,
         ':Id' => $Id
     ));
 
