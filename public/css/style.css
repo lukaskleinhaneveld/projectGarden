@@ -313,6 +313,8 @@ td.header {
 td.content {
     padding: 2px 5px;
     background-color: #ececec;
+    overflow: hidden;
+    max-width: 100px;
 }
 
 .userList td {
@@ -587,7 +589,7 @@ img {
     height: 500px;
 }
 
-.draggable {
+/*.draggable {
     width: 150px;
     max-width: 150px;
     height: 150px;
@@ -598,7 +600,7 @@ img {
     border: solid black 1px;
     background-color: white;
     z-index: 20;
-}
+}*/
 
 #droppableArea {
     width: 1344px;

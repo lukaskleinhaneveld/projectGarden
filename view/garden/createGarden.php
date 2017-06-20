@@ -6,14 +6,15 @@
             foreach($stock as $stockItem){
             ?>
                 <div id="<?= $stockItem['Id'] ?>" class="draggable" onmouseover="drop()">
+                    <img src="<?= $stockItem['ImgURL'] ?>" style="width: 150px; height: 150px; border-radius: 50%;"><br/>
                     <p>Item: <?= $stockItem['Name'] ?></p><br/>
                     <p>Price: <?= $stockItem['Price'] ?></p><br/>
+
                 </div>
             <?php
             }
             ?>
         </div>
-
     </div>
     <div id="summaryArea">
         <div id="totalItemsInGarden">

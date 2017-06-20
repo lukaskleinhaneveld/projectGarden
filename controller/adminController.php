@@ -176,8 +176,13 @@ function editStock($Id){
             }else{
                 $Amount = $stock['Amount'];
             };
+            if(isset($_POST['ImgURL'])){
+                $ImgURL = $_POST['ImgURL'];
+            }else{
+                $ImgURL = $stock['ImgURL'];
+            };
 
-            updateeStock($Name, $Price, $Amount, $Id);
+            updateeStock($Name, $Price, $Amount, $ImgURL, $Id);
 
             header('Location: ' . URL . 'admin/stock');
         }

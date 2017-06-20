@@ -11,6 +11,7 @@
         <input type="text" name="Price" value="<?= $stock['Price']; ?>" required />
                 <label for="Amount">Amount:</label>
         <input type="text" name="Amount" value="<?= $stock['Amount']; ?>" required />
+                <label for="ImgURL">ImgURL:</label>
+        <input type="text" name="ImgURL" value="<?= $stock['ImgURL']; ?>" required />
         <input type="submit" name="submit_update_stock" value="Update" />
     </form>
-

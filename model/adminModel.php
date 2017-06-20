@@ -62,17 +62,18 @@ function deleteUserFromDatabase($Id){
 
     $_SESSION['message'] = $message;
 }
-function updateeStock($Name, $Price, $Amount,$Id){
+function updateeStock($Name, $Price, $Amount, $ImgURL, $Id){
     $db = openDatabaseConnection();
 
     //$Password = hash('sha256', $Password);
 
-    $sql = "UPDATE stock SET Name = :Name, Price = :Price, Amount = :Amount WHERE Id = :Id";
+    $sql = "UPDATE stock SET Name = :Name, Price = :Price, Amount = :Amount, ImgURL = :ImgURL WHERE Id = :Id";
     $query = $db->prepare($sql);
     $query->execute(array(
         ':Name' => $Name,
         ':Price' => $Price,
         ':Amount' => $Amount,
+        ':ImgURL' => $ImgURL,
         ':Id' => $Id
     ));
 
