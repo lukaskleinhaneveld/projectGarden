@@ -1,12 +1,12 @@
 <?php
 
 // This function does the database sided updating for the users
-function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isTeacher, $Id){
+function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isAdmin, $Id){
     $db = openDatabaseConnection();
 
     //$Password = hash('sha256', $Password);
 
-    $sql = "UPDATE users SET Firstname = :Firstname, Lastname = :Lastname, Password = :Password, Email = :Email, Active = :Active, isTeacher = :isTeacher WHERE Id = :Id";
+    $sql = "UPDATE users SET Firstname = :Firstname, Lastname = :Lastname, Password = :Password, Email = :Email, Active = :Active, isAdmin = :isAdmin WHERE Id = :Id";
     $query = $db->prepare($sql);
     $query->execute(array(
         ':Firstname' => $Firstname,
@@ -14,7 +14,7 @@ function updateeUser($Firstname, $Lastname, $Password, $Email, $Active, $isTeach
         ':Password' => $Password,
         ':Email' => $Email,
         ':Active' => $Active,
-        ':isTeacher' => $isTeacher,
+        ':isAdmin' => $isAdmin,
         ':Id' => $Id
     ));
 
@@ -62,17 +62,18 @@ function deleteUserFromDatabase($Id){
 
     $_SESSION['message'] = $message;
 }
-function updateeStock($Name, $Price, $Amount,$Id){
+function updateeStock($Name, $Price, $Amount, $ImgURL, $Id){
     $db = openDatabaseConnection();
 
     //$Password = hash('sha256', $Password);
 
-    $sql = "UPDATE stock SET Name = :Name, Price = :Price, Amount = :Amount WHERE Id = :Id";
+    $sql = "UPDATE stock SET Name = :Name, Price = :Price, Amount = :Amount, ImgURL = :ImgURL WHERE Id = :Id";
     $query = $db->prepare($sql);
     $query->execute(array(
         ':Name' => $Name,
         ':Price' => $Price,
         ':Amount' => $Amount,
+        ':ImgURL' => $ImgURL,
         ':Id' => $Id
     ));
 

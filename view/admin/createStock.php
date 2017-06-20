@@ -17,6 +17,10 @@
         <input id="Amount" name="Amount">
     </div>
     <div>
+        <label for="ImgURL">ImgURL:</label>
+        <input id="ImgURL" name="ImgURL">
+    </div>
+    <div>
         <label></label>
         <input type="submit" value="Save">
     </div>

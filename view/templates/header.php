@@ -22,7 +22,7 @@
 			            <li><a href="<?= URL ?>home/index">Home</a></li>
 						<li><a href="<?= URL ?>garden/createGarden">Start creating</a></li>
 					<?php } ?>
-					<?php if(!empty($_SESSION['isTeacher'])){ ?>
+					<?php if(!empty($_SESSION['isAdmin'])){ ?>
 						<li><a href="<?= URL ?>admin/index">Admin</a></li>
 					<?php } ?>
 		        </ul>

@@ -7,6 +7,7 @@ function drop(){
         start: function (event, ui){
             counter = $(this).attr("class") + " " +count++;
             $(this).addClass(counter);
+                
             console.log(counter);
         }
     });
@@ -33,9 +34,14 @@ function drop(){
         }
     });
 
+
     $('.draggable').dblclick(function(event, ui) {
+        if($(this).hasClass('ui-draggable-dragging')){
+
+
         console.log("Deleted item with ID: " + $(".draggable").attr("id"));
         $(this).remove();
+        }
     });
 
 }

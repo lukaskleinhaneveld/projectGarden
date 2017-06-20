@@ -11,6 +11,7 @@
                     <td class="header">Name</td>
                     <td class="header">Price</td>
                     <td class="header">Amount available</td>
+                    <td class="header">Image URL</td>
                     <td class="header">Edit</td>
                     <td class="header">Delete</td>
                 </tr>
@@ -29,6 +30,9 @@
                         </td>
                         <td class="content">
                             <?= $stock['Amount']; ?>
+                        </td>
+                        <td class="content">
+                            <?= $stock['ImgURL']; ?>
                         </td>
                         <td class="content"><a href="<?= URL ?>admin/editStock/<?= $stock['Id'] ?>">Edit</a></td>
                         <td class="content"><a href="<?= URL ?>admin/deleteStock/<?= $stock['Id'] ?>">Delete</a></td>
