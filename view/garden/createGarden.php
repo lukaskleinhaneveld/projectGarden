@@ -28,3 +28,6 @@
 
 <!-- Drag and drop script -->
 <script type="text/javascript" src="<?= URL ?>/public/js/dragndrop.js"></script>
+<!-- Google maps API -->
+<!-- <script type="text/javascript" src="<?= URL ?>/public/js/googleMapsAPI.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3N_V7fK1m6ThuebPa_yH2HpWCuIPXNPs&callback=initMap"> -->
