@@ -4,14 +4,14 @@
 // locate you.
 var map, infoWindow;
 var mapOptions = {
-    zoom: 20,
+    zoom: 10,
     streetViewControl: false,
     mapTypeId: 'satellite',
-    panControl: false,
-    zoomControl: false,
-    scaleControl: false,
-    overviewMapControl: false,
-    rotateControl: false
+    panControl: true,
+    zoomControl: true,
+    scaleControl: true,
+    overviewMapControl: true,
+    rotateControl: true
 };
 
 function initMap() {
