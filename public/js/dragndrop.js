@@ -8,6 +8,7 @@ function drop(){
             var counted = $("#gardenCreation > div[id*=" + $(this).attr("id") + "]").length;
             console.log("Amount of divs with id " + $(this).attr("id") + ": " + counted);
 
+            $(ui.helper).addClass(" dropped");
         }
     });
 
@@ -30,13 +31,16 @@ function drop(){
             $(this).append($(ui.helper).clone().draggable({
                 containment: "parent"
             }));
+            
+            if ($(this).hasClass("dropped")){
+                $(this).draggable({});
+            }
         }
     });
 
 
     $('.draggable').dblclick(function(event, ui) {
         if($(this).hasClass('ui-draggable-dragging')){
-
 
         console.log("Deleted item with ID: " + $(".draggable").attr("id"));
         $(this).remove();

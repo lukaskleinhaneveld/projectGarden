@@ -6,7 +6,7 @@
             foreach($stock as $stockItem){
             ?>
                 <div id="<?= $stockItem['Id'] ?>" class="draggable" onmouseover="drop()">
-                    <img src="<?= $stockItem['ImgURL'] ?>" style="width: 150px; height: 150px; border-radius: 50%;"><br/>
+                    <img src="<?= $stockItem['ImgURL'] ?>" style="width: 150px; height: 150px; border-radius: 50%; margin-top: 0px;"><br/>
                     <p>Item: <?= $stockItem['Name'] ?></p><br/>
                     <p>Price: <?= $stockItem['Price'] ?></p><br/>
 
