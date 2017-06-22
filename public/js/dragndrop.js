@@ -11,6 +11,7 @@ function drop(){
             console.log(counter);
 
             var counted1 = $("div[id*=1]").length;
+            var price1 = $("").length;
             console.log("Amount of divs with id 1: " + counted1);
 
 
