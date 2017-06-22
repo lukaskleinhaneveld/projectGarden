@@ -589,7 +589,7 @@ img {
     height: 500px;
 }
 
-/*.draggable {
+.draggable {
     width: 150px;
     max-width: 150px;
     height: 150px;
@@ -597,10 +597,8 @@ img {
     padding: 0.5em;
     cursor:move;
     float: left;
-    border: solid black 1px;
-    background-color: white;
     z-index: 20;
-}*/
+}
 
 #droppableArea {
     width: 1344px;
