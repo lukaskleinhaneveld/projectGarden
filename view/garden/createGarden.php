@@ -1,6 +1,7 @@
 <div id="Container">
     <div id="droppableArea">
-        <div id="gardenCreation"></div>
+        <div id="gardenCreation">
+        </div>
         <div id="itemShoppingList">
             <?php
             foreach($stock as $stockItem){
