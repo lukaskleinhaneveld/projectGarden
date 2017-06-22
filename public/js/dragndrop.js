@@ -1,28 +1,35 @@
-var count = 0;
+var idCounters = [];
+
 function drop(){
+    // Initiate the draggable item and set some options
     $(".draggable").draggable({
         revert: "invalid",
         helper: "clone",
         containment: "#droppableArea",
         start: function (event, ui){
-            counter = $(this).attr("class") + " " +count++;
-            $(this).addClass(counter);
+          
+            // Get the id of the parent of the clone that you want to drag
+            var id = $(this).attr('id');
 
-            console.log(counter);
+            // Check if the item you want to drag already has a custom ID
+            // If it doesnt, set the counter to 1
+            if (idCounters[id] == null) {
+                idCounters[id] = 1;
+            // If so, add 1 to the counter
+            } else {
+                idCounters[id] = idCounters[id] + 1;
+            }
 
-            var counted1 = $("div[id*=1]").length;
-            var price1 = $("").length;
-            console.log("Amount of divs with id 1: " + counted1);
+            // Set the new id
+            var newId = id + "_" + idCounters[id];
+            ui.helper.attr("id", newId);
+        },
+        stop: function (event, ui){
 
+            // Check and log the amount of items with the id of the item you last dragged in the #gardenCreation div
+            var counted = $("#gardenCreation > div[id*=" + $(this).attr('id') + "]").length;
+            console.log("Amount of divs with id " + $(this).attr("id") + ": " + counted);
 
-
-            var counted2 = $("div[id*=2]").length;
-            console.log("Amount of divs with id 2: " + counted2);
-
-
-
-            var counted3 = $("div[id*=3]").length;
-            console.log("Amount of divs with id 3: " + counted3);
         }
     });
 
@@ -34,7 +41,7 @@ function drop(){
         drop: function (event, ui){
             var posLeft = ui.position.left;
             var posTop = ui.position.top;
-            console.log("Element with id " + $(".draggable").attr("id") + " and " + $(".draggable").attr("class") + "'s " + "position-x: " + posLeft + " and position-y: " + posTop);
+            console.log("Element with id " + $(".draggable").attr("id") + "'s " + "position-x: " + posLeft + " and position-y: " + posTop);
 
             var element = $(ui.draggable).clone();
             $(element).draggable({helper: 'clone'});
@@ -45,16 +52,23 @@ function drop(){
             $(this).append($(ui.helper).clone().draggable({
                 containment: "parent"
             }));
+            $("#gardenCreation .draggable").addClass("dropped");
+            $(".dropped").removeClass(" ui-draggable-dragging");
+            $(".dropped").draggable({
+                containment: '#gardenCreation'
+            });
+
+
         }
     });
 
 
     $('.draggable').dblclick(function(event, ui) {
+        // Check if the draggable item has the ui-draggable-dragging class
         if($(this).hasClass('ui-draggable-dragging')){
-
-
-        console.log("Deleted item with ID: " + $(".draggable").attr("id"));
-        $(this).remove();
+            // If it does, remove the item
+            $(this).remove();
+            console.log("Deleted item with ID: " + $(".draggable").attr("id"));
         }
     });
 
