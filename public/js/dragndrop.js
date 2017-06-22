@@ -57,6 +57,12 @@ function drop(){
                 containment: '#gardenCreation'
             });
 
+            $( ".dropped" ).resizable({
+                ghost: true,
+                aspectRatio: true,
+                helper: "resizable-helper"
+            });
+
 
         }
     });
