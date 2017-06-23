@@ -118,14 +118,6 @@ $( document ).ready( function() {
                 }
             });
 
-
-            $.ajax({
-                url: "/fortifyProjects/projectGarden/home/test",
-                success: function(result){
-                    $("#div1").html(result);
-                }
-            });
-
             updateCart();
 
             console.log(idCounters);
