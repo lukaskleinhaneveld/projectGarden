@@ -28,3 +28,7 @@ function settings(){
     }
 
 }
+
+function test() {
+	echo "Im a dickwad";
+}

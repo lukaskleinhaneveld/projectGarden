@@ -6,10 +6,10 @@
             <?php
             foreach($stock as $stockItem){
             ?>
-                <div id="<?= $stockItem['Id'] ?>" class="draggable">
-                    <img src="<?= $stockItem['ImgURL'] ?>" style="width: 150px; height: 150px; border-radius: 50%; margin-top: 0px;"><br/>
-                    <p>Item: <?= $stockItem['Name'] ?></p><br/>
-                    <p>Price: <?= $stockItem['Price'] ?></p><br/>
+                <div id="<?= $stockItem['Id'] ?>" class="item draggable">
+                    <img src="<?= $stockItem['ImgURL'] ?>" style="width: 90%; height: 90%; border-radius: 50%; margin-top: 0px;"><br/>
+                    <p class="item">Item: <?= $stockItem['Name'] ?></p><br/>
+                    <p class="price">Price: <?= $stockItem['Price'] ?></p><br/>
 
                 </div>
             <?php
@@ -19,12 +19,7 @@
     </div>
     <div id="summaryArea">
         <div id="totalItemsInGarden">
-                <ul>
-                    <li>id, naam, prijs: aantal</li>
-                    <li>id, naam, prijs: aantal</li>
-                    <li>id, naam, prijs: aantal</li>
-                    <li>id, naam, prijs: aantal</li>
-                </ul>
+
         </div>
         <div id="costSummary">
 
@@ -34,15 +29,23 @@
 
 <script type="text/javascript">
 var idCounters = [];
-var products = '<?php echo json_encode($stock); ?>';
+var products = [];
+
 
 function updateCart() {
     var output = '';
     for(var i in idCounters) {
-        output = output + '<li>' + i + '=>' + idCounters[i] + ', </li>';
+        console.log($('.item#' + i).find('img').attr('src'));
+        output = output + '<div id="output"><img src="' + $('.item#' + i).find('img').attr('src') + '" class="outputImg">' + "<p class='amount'>" + i + '=>' + idCounters[i] + "</p></div>";
     }
 
+    console.log("Price: " + $('.item#' + i).find('p.price').text());
+
+
+    console.log("Output: " + output);
+
     $('#totalItemsInGarden').html(output);
+
 }
 
 
@@ -99,8 +102,21 @@ $( document ).ready( function() {
             }));
             $("#gardenCreation .draggable").addClass("dropped");
             $(".dropped").removeClass(" ui-draggable-dragging");
-            $(".dropped").draggable({
-                containment: '#gardenCreation'
+
+            $('.dropped').resizable({
+                helper: "resizable-helper",
+                ghost: true,
+                aspectRatio: true,
+                animate: true
+            });
+
+            $('.dropped').dblclick(function(event, ui) {
+                // Check if the draggable item has the ui-draggable-dragging class
+                if($(this).hasClass('dropped')){
+                    // If it does, remove the item
+                    $(this).remove();
+                    console.log("Deleted item with ID: " + $(".draggable").attr("id"));
+                }
             });
 
             updateCart();
@@ -109,18 +125,7 @@ $( document ).ready( function() {
 
         }
     });
-
-
-    $('.draggable').dblclick(function(event, ui) {
-        // Check if the draggable item has the ui-draggable-dragging class
-        if($(this).hasClass('ui-draggable-dragging')){
-            // If it does, remove the item
-            $(this).remove();
-            console.log("Deleted item with ID: " + $(".draggable").attr("id"));
-        }
-    });
-
-})
+});
 </script>
 
 <!-- Drag and drop script -->
