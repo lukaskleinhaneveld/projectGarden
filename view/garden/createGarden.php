@@ -9,7 +9,7 @@
                 <div id="<?= $stockItem['Id'] ?>" class="item draggable">
                     <img src="<?= $stockItem['ImgURL'] ?>" style="width: 90%; height: 90%; border-radius: 50%; margin-top: 0px;"><br/>
                     <p class="item">Item: <?= $stockItem['Name'] ?></p><br/>
-                    <p class="price">Price: <?= $stockItem['Price'] ?></p><br/>
+                    <p class="price" style="display: none;"><?= $stockItem['Price'] ?></p><br/>
 
                 </div>
             <?php
@@ -34,15 +34,19 @@ var products = [];
 
 function updateCart() {
     var output = '';
+    var priceOutput = '';
+
+
     for(var i in idCounters) {
         console.log($('.item#' + i).find('img').attr('src'));
         output = output + '<div id="output"><img src="' + $('.item#' + i).find('img').attr('src') + '" class="outputImg">' + "<p class='amount'>" + i + '=>' + idCounters[i] + "</p></div>";
+
+        priceOutput = priceOutput + $('.item#' + i).find('p.price').text();
+        var extra = parseInt(priceOutput);
+        console.log("Int: " + extra + extra);
+        $('#costSummary').html(extra);
     }
 
-    console.log("Price: " + $('.item#' + i).find('p.price').text());
-
-
-    console.log("Output: " + output);
 
     $('#totalItemsInGarden').html(output);
 
@@ -131,5 +135,5 @@ $( document ).ready( function() {
 <!-- Drag and drop script -->
 <!-- <script type="text/javascript" src="<?= URL ?>/public/js/dragndrop.js"></script> -->
 <!-- Google maps API -->
-<script type="text/javascript" src="<?= URL ?>/public/js/googleMapsAPI.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3N_V7fK1m6ThuebPa_yH2HpWCuIPXNPs&callback=initMap">
+<!-- <script type="text/javascript" src="<?= URL ?>/public/js/googleMapsAPI.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3N_V7fK1m6ThuebPa_yH2HpWCuIPXNPs&callback=initMap"> -->
